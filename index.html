@@ -1,707 +1,276 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Meridian Rx Advisors | Healthcare Pharmacy M&A Advisory</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Rx Advisors&#8482; | Healthcare Pharmacy M&amp;A Advisory</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #0a1628;
-    --navy-mid: #112240;
-    --navy-light: #1a3560;
-    --accent: #1a52d4;
-    --accent-bright: #2d6af6;
-    --gold: #a07840;
-    --white: #f8f9fc;
-    --text-muted: #4a5a7a;
-    --card-bg: #eef1f7;
-    --border: rgba(10,22,40,0.14);
-    --bg: #f8f9fc;
-    --bg-mid: #edf0f7;
-  }
-
-- { margin: 0; padding: 0; box-sizing: border-box; }
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #f8f9fc; color: #0a1628; overflow-x: hidden; }
 
-body {
-font-family: ‘DM Sans’, sans-serif;
-background: #f8f9fc;
-color: #0a1628;
-overflow-x: hidden;
-}
-
-/* ─── NAV ─── */
-nav {
-position: fixed; top: 0; width: 100%; z-index: 100;
-background: rgba(248,249,252,0.97);
-backdrop-filter: blur(12px);
-border-bottom: 1px solid rgba(10,22,40,0.14);
-display: flex; align-items: center; justify-content: space-between;
-padding: 0 5%;
-height: 72px;
-}
-.nav-logo {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.2rem; font-weight: 700;
-color: #0a1628; line-height: 1.2;
-letter-spacing: -0.01em;
-}
-.nav-logo span { color: #1a52d4; }
+/* ── NAV ── */
+nav { position: fixed; top: 0; width: 100%; z-index: 999; background: rgba(248,249,252,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(10,22,40,0.10); height: 72px; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: #0a1628; text-decoration: none; }
+.nav-logo .rx { color: #1a52d4; }
+.nav-logo sup { font-size: 0.45em; vertical-align: super; color: #4a5a7a; font-family: sans-serif; font-weight: 400; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a {
-color: #4a5a7a; text-decoration: none;
-font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em;
-transition: color 0.2s;
-}
+.nav-links a { color: #4a5a7a; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: #0a1628; }
-.btn-nav {
-background: #1a52d4; color: #fff;
-border: none; padding: 0.6rem 1.4rem;
-border-radius: 6px; font-size: 0.9rem; font-weight: 600;
-cursor: pointer; transition: background 0.2s;
-text-decoration: none;
-}
-.btn-nav:hover { background: #2d6af6; }
+.nav-cta { background: #0a1628; color: #fff; padding: 0.55rem 1.3rem; border-radius: 6px; font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+.nav-cta:hover { background: #1a3560; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: #0a1628; border-radius: 2px; transition: all 0.3s; }
+.mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: #fff; border-bottom: 1px solid rgba(10,22,40,0.10); padding: 1.5rem 5%; z-index: 998; }
+.mobile-menu.open { display: block; }
+.mobile-menu a { display: block; color: #0a1628; text-decoration: none; font-size: 1rem; font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid rgba(10,22,40,0.06); }
+.mobile-menu a:last-child { border-bottom: none; }
 
-/* ─── HERO ─── */
-#hero {
-min-height: 100vh;
-display: flex; align-items: center;
-padding: 120px 5% 80px;
-position: relative;
-overflow: hidden;
-}
-.hero-bg {
-position: absolute; inset: 0;
-background: linear-gradient(135deg, #edf0f7 0%, #f8f9fc 60%, #e8ecf5 100%);
-}
-.hero-grid {
-position: absolute; inset: 0;
-background-image:
-linear-gradient(rgba(10,22,40,0.06) 1px, transparent 1px),
-linear-gradient(90deg, rgba(10,22,40,0.06) 1px, transparent 1px);
-background-size: 60px 60px;
-}
-.hero-glow {
-position: absolute; right: -200px; top: 50%;
-transform: translateY(-50%);
-width: 700px; height: 700px;
-background: radial-gradient(circle, rgba(26,82,212,0.08) 0%, transparent 70%);
-pointer-events: none;
-}
+/* ── HERO ── */
+#hero { min-height: 100vh; display: flex; align-items: center; padding: 110px 5% 80px; position: relative; overflow: hidden; background: linear-gradient(135deg, #edf0f8 0%, #f8f9fc 55%, #e8ecf6 100%); }
+.hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(10,22,40,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(10,22,40,0.05) 1px, transparent 1px); background-size: 56px 56px; pointer-events: none; }
+.hero-glow { position: absolute; right: -150px; top: 50%; transform: translateY(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(26,82,212,0.08) 0%, transparent 70%); pointer-events: none; }
 .hero-content { position: relative; z-index: 2; max-width: 680px; }
-.hero-badge {
-display: inline-flex; align-items: center; gap: 0.5rem;
-background: rgba(26,82,212,0.08);
-border: 1px solid rgba(26,82,212,0.25);
-color: #1a52d4;
-padding: 0.4rem 1rem; border-radius: 100px;
-font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
-margin-bottom: 1.5rem;
-text-transform: uppercase;
-}
-.hero-badge::before { content: “●”; font-size: 0.5rem; }
-h1 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(2.4rem, 5vw, 4rem);
-font-weight: 700; line-height: 1.15;
-margin-bottom: 1.25rem;
-color: #0a1628;
-}
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(26,82,212,0.08); border: 1px solid rgba(26,82,212,0.22); color: #1a52d4; padding: 0.38rem 1rem; border-radius: 100px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem; }
+.hero-badge::before { content: "●"; font-size: 0.45rem; }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.25rem; color: #0a1628; }
 h1 em { color: #1a52d4; font-style: normal; }
-.hero-sub {
-font-size: 1.1rem; color: #4a5a7a;
-line-height: 1.7; margin-bottom: 2.5rem; max-width: 540px;
-}
-.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary {
-background: #0a1628; color: #fff;
-padding: 0.85rem 2rem; border-radius: 8px;
-font-size: 0.95rem; font-weight: 600;
-border: none; cursor: pointer; transition: all 0.2s;
-text-decoration: none; display: inline-block;
-}
-.btn-primary:hover { background: #112240; transform: translateY(-2px); }
-.btn-outline {
-background: transparent; color: #0a1628;
-padding: 0.85rem 2rem; border-radius: 8px;
-font-size: 0.95rem; font-weight: 600;
-border: 1px solid rgba(10,22,40,0.3); cursor: pointer;
-transition: all 0.2s; text-decoration: none; display: inline-block;
-}
+.hero-sub { font-size: 1.05rem; color: #4a5a7a; line-height: 1.75; margin-bottom: 2.5rem; max-width: 560px; }
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn-primary { background: #0a1628; color: #fff; padding: 0.85rem 2rem; border-radius: 8px; font-size: 0.92rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; font-family: 'DM Sans', sans-serif; }
+.btn-primary:hover { background: #1a3560; transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #0a1628; padding: 0.85rem 2rem; border-radius: 8px; font-size: 0.92rem; font-weight: 600; border: 1.5px solid rgba(10,22,40,0.25); cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
 .btn-outline:hover { border-color: #1a52d4; color: #1a52d4; }
-.hero-stats {
-display: flex; gap: 2.5rem; margin-top: 3.5rem;
-padding-top: 2rem; border-top: 1px solid rgba(10,22,40,0.14);
-}
-.stat-val {
-font-family: ‘Playfair Display’, serif;
-font-size: 2rem; font-weight: 700; color: #1a52d4;
-}
-.stat-label { font-size: 0.8rem; color: #4a5a7a; margin-top: 0.2rem; }
+.hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 2rem; border-top: 1px solid rgba(10,22,40,0.10); }
+.stat-val { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; color: #1a52d4; }
+.stat-label { font-size: 0.78rem; color: #4a5a7a; margin-top: 0.2rem; }
 
-/* ─── SECTIONS ─── */
-section { padding: 100px 5%; }
-.section-label {
-font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
-text-transform: uppercase; color: #1a52d4;
-margin-bottom: 0.75rem;
-}
-h2 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-font-weight: 700; line-height: 1.2;
-margin-bottom: 1rem;
-color: #0a1628;
-}
+/* ── SECTIONS ── */
+section { padding: 90px 5%; }
+.section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1a52d4; margin-bottom: 0.6rem; }
+h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.5vw, 2.6rem); font-weight: 700; line-height: 1.2; margin-bottom: 0.9rem; color: #0a1628; }
 h2 em { color: #1a52d4; font-style: normal; }
-.section-intro {
-color: #4a5a7a; font-size: 1rem;
-line-height: 1.7; max-width: 600px;
-margin-bottom: 3.5rem;
-}
+.section-intro { color: #4a5a7a; font-size: 0.97rem; line-height: 1.75; max-width: 600px; margin-bottom: 3rem; }
 
-/* ─── SERVICES ─── */
+/* ── SERVICES ── */
 #services { background: #edf0f7; }
-.services-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-gap: 1.5rem;
-}
-.service-card {
-background: #f8f9fc;
-border: 1px solid rgba(10,22,40,0.14);
-border-radius: 12px;
-padding: 2rem;
-transition: all 0.3s;
-position: relative; overflow: hidden;
-box-shadow: 0 2px 12px rgba(10,22,40,0.05);
-}
-.service-card::before {
-content: ‘’; position: absolute; top: 0; left: 0; right: 0;
-height: 3px;
-background: linear-gradient(90deg, #1a52d4, #0a1628);
-opacity: 0; transition: opacity 0.3s;
-}
-.service-card:hover { transform: translateY(-4px); border-color: #1a52d4; box-shadow: 0 8px 30px rgba(10,22,40,0.1); }
-.service-card:hover::before { opacity: 1; }
-.service-icon {
-width: 52px; height: 52px;
-background: rgba(26,82,212,0.08);
-border: 1px solid rgba(26,82,212,0.2);
-border-radius: 12px;
-display: flex; align-items: center; justify-content: center;
-font-size: 1.5rem; margin-bottom: 1.25rem;
-}
-.service-card h3 {
-font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem;
-color: #0a1628;
-}
-.service-card p { font-size: 0.88rem; color: #4a5a7a; line-height: 1.65; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.service-card { background: #fff; border: 1px solid rgba(10,22,40,0.10); border-radius: 12px; padding: 1.75rem; transition: all 0.3s; position: relative; overflow: hidden; }
+.service-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #1a52d4, #0a1628); opacity: 0; transition: opacity 0.3s; }
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(10,22,40,0.10); border-color: #1a52d4; }
+.service-card:hover::after { opacity: 1; }
+.service-icon { font-size: 1.6rem; margin-bottom: 1rem; display: block; }
+.service-card h3 { font-size: 0.97rem; font-weight: 700; color: #0a1628; margin-bottom: 0.6rem; line-height: 1.35; }
+.service-card p { font-size: 0.84rem; color: #4a5a7a; line-height: 1.65; margin-bottom: 0.9rem; }
+.service-list { list-style: none; padding: 0; margin: 0; }
+.service-list li { font-size: 0.81rem; color: #4a5a7a; padding: 0.28rem 0; border-bottom: 1px solid rgba(10,22,40,0.05); display: flex; align-items: flex-start; gap: 0.5rem; }
+.service-list li:last-child { border-bottom: none; }
+.service-list li::before { content: "→"; color: #1a52d4; font-weight: 700; font-size: 0.72rem; margin-top: 0.15rem; flex-shrink: 0; }
 
-/* ─── WHY US ─── */
+/* ── WHY US ── */
 #why { background: #f8f9fc; }
-.why-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 4rem; align-items: center;
-}
-.why-points { display: flex; flex-direction: column; gap: 1.5rem; }
-.why-point {
-display: flex; gap: 1rem;
-padding: 1.25rem 1.5rem;
-background: #f8f9fc;
-border: 1px solid rgba(10,22,40,0.14);
-border-radius: 10px;
-transition: border-color 0.2s;
-box-shadow: 0 2px 10px rgba(10,22,40,0.05);
-}
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+.why-points { display: flex; flex-direction: column; gap: 1.25rem; }
+.why-point { display: flex; gap: 1rem; padding: 1.25rem 1.5rem; background: #fff; border: 1px solid rgba(10,22,40,0.10); border-radius: 10px; transition: border-color 0.2s; box-shadow: 0 2px 8px rgba(10,22,40,0.04); }
 .why-point:hover { border-color: #1a52d4; }
-.why-num {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.5rem; font-weight: 700;
-color: #1a52d4; min-width: 2rem;
-}
-.why-text h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: #0a1628; }
-.why-text p { font-size: 0.85rem; color: #4a5a7a; line-height: 1.6; }
-.why-visual {
-background: #0a1628;
-border: 1px solid rgba(255,255,255,0.08);
-border-radius: 16px;
-padding: 2.5rem;
-}
-.why-visual h3 {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.3rem; margin-bottom: 1.5rem; color: #c8a96e;
-}
-.metric-row {
-display: flex; justify-content: space-between; align-items: center;
-padding: 0.9rem 0;
-border-bottom: 1px solid rgba(255,255,255,0.08);
-}
+.why-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #1a52d4; min-width: 2rem; line-height: 1; margin-top: 0.1rem; }
+.why-text h4 { font-size: 0.95rem; font-weight: 700; color: #0a1628; margin-bottom: 0.35rem; }
+.why-text p { font-size: 0.84rem; color: #4a5a7a; line-height: 1.65; }
+.why-panel { background: #0a1628; border-radius: 16px; padding: 2.25rem; }
+.why-panel h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #c8a96e; margin-bottom: 1.5rem; }
+.metric-row { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
 .metric-row:last-child { border-bottom: none; }
-.metric-label { font-size: 0.88rem; color: rgba(255,255,255,0.55); }
-.metric-val {
-font-weight: 700; font-size: 1rem; color: #7eb3ff;
-}
+.metric-label { font-size: 0.84rem; color: rgba(255,255,255,0.55); }
+.metric-val { font-weight: 700; font-size: 0.97rem; color: #7eb3ff; }
 
-/* ─── INDUSTRIES ─── */
+/* ── INDUSTRIES ── */
 #industries { background: #edf0f7; }
-.industries-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-gap: 1.25rem;
-}
-.industry-card {
-background: #f8f9fc;
-border: 1px solid rgba(10,22,40,0.14);
-border-radius: 10px;
-padding: 1.75rem 1.5rem;
-cursor: pointer;
-transition: all 0.25s;
-display: flex; align-items: flex-start; gap: 1rem;
-box-shadow: 0 2px 10px rgba(10,22,40,0.05);
-}
-.industry-card:hover {
-border-color: #1a52d4; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(10,22,40,0.1);
-}
-.industry-icon { font-size: 1.5rem; }
-.industry-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: #0a1628; }
-.industry-card p { font-size: 0.82rem; color: #4a5a7a; line-height: 1.5; }
+.industries-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.industry-card { background: #fff; border: 1px solid rgba(10,22,40,0.10); border-radius: 10px; padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; transition: all 0.25s; box-shadow: 0 2px 8px rgba(10,22,40,0.04); }
+.industry-card:hover { border-color: #1a52d4; transform: translateY(-3px); box-shadow: 0 10px 28px rgba(10,22,40,0.10); }
+.industry-icon { font-size: 1.5rem; flex-shrink: 0; }
+.industry-card h4 { font-size: 0.92rem; font-weight: 700; color: #0a1628; margin-bottom: 0.3rem; }
+.industry-card p { font-size: 0.81rem; color: #4a5a7a; line-height: 1.55; }
 
-/* ─── PROCESS ─── */
+/* ── PROCESS ── */
 #process { background: #f8f9fc; }
-.process-steps {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 0; position: relative;
-}
-.process-steps::before {
-content: ‘’; position: absolute;
-top: 40px; left: 10%; right: 10%;
-height: 1px; background: rgba(10,22,40,0.14);
-}
-.process-step { text-align: center; padding: 0 1.5rem; }
-.step-num {
-width: 80px; height: 80px; border-radius: 50%;
-background: #f8f9fc;
-border: 2px solid #1a52d4;
-display: flex; align-items: center; justify-content: center;
-margin: 0 auto 1.25rem;
-font-family: ‘Playfair Display’, serif;
-font-size: 1.5rem; font-weight: 700;
-color: #1a52d4; position: relative; z-index: 2;
-box-shadow: 0 4px 16px rgba(26,82,212,0.12);
-}
-.process-step h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; color: #0a1628; }
-.process-step p { font-size: 0.83rem; color: #4a5a7a; line-height: 1.6; }
+.process-explainer { background: #fff; border: 1px solid rgba(10,22,40,0.10); border-radius: 16px; padding: 2.5rem; margin-bottom: 4rem; box-shadow: 0 4px 20px rgba(10,22,40,0.06); }
+.explainer-badge { display: inline-block; background: rgba(26,82,212,0.08); border: 1px solid rgba(26,82,212,0.20); color: #1a52d4; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 0.75rem; }
+.explainer-sub { color: #4a5a7a; font-size: 0.92rem; line-height: 1.7; max-width: 680px; margin-bottom: 2rem; }
+.explainer-step { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.25rem; border-radius: 10px; transition: background 0.2s; }
+.explainer-step:hover { background: #f8f9fc; }
+.explainer-step-icon { width: 48px; height: 48px; min-width: 48px; background: rgba(26,82,212,0.07); border: 1px solid rgba(26,82,212,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.explainer-step-num { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1a52d4; margin-bottom: 0.25rem; }
+.explainer-step h4 { font-size: 0.95rem; font-weight: 700; color: #0a1628; margin-bottom: 0.35rem; }
+.explainer-step p { font-size: 0.84rem; color: #4a5a7a; line-height: 1.65; }
+.explainer-step strong { color: #0a1628; font-weight: 600; }
+.nda-warning { display: inline-block; margin-top: 0.6rem; background: rgba(200,80,30,0.07); border: 1px solid rgba(200,80,30,0.18); color: #8a3010; font-size: 0.8rem; font-weight: 500; padding: 0.4rem 0.8rem; border-radius: 6px; }
+.explainer-connector { width: 2px; height: 24px; background: rgba(10,22,40,0.08); margin: 0 0 0 23px; }
+.process-timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+.process-timeline::before { content: ''; position: absolute; top: 36px; left: 8%; right: 8%; height: 1px; background: rgba(10,22,40,0.12); z-index: 0; }
+.process-step { text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
+.step-circle { width: 72px; height: 72px; border-radius: 50%; background: #fff; border: 2px solid #1a52d4; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #1a52d4; box-shadow: 0 4px 16px rgba(26,82,212,0.12); }
+.process-step h4 { font-size: 0.88rem; font-weight: 700; color: #0a1628; margin-bottom: 0.4rem; }
+.process-step p { font-size: 0.8rem; color: #4a5a7a; line-height: 1.6; }
+.process-subhead { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #0a1628; margin-bottom: 2.5rem; margin-top: 0; }
+.process-subhead em { color: #1a52d4; font-style: normal; }
 
-/* ─── RESOURCES ─── */
+/* ── RESOURCES ── */
 #resources { background: #edf0f7; }
-.resources-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 1.5rem;
-}
-.resource-card {
-background: #f8f9fc;
-border: 1px solid rgba(10,22,40,0.14);
-border-radius: 12px; overflow: hidden;
-transition: all 0.3s;
-box-shadow: 0 2px 12px rgba(10,22,40,0.05);
-}
-.resource-card:hover { transform: translateY(-4px); border-color: #1a52d4; box-shadow: 0 8px 28px rgba(10,22,40,0.1); }
-.resource-tag {
-background: rgba(26,82,212,0.08);
-color: #1a52d4;
-font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
-text-transform: uppercase;
-padding: 0.3rem 0.75rem; display: inline-block;
-margin: 1.25rem 1.25rem 0;
-border-radius: 4px;
-}
-.resource-card h4 {
-font-size: 1rem; font-weight: 600;
-padding: 0.75rem 1.25rem 0.5rem;
-line-height: 1.4; color: #0a1628;
-}
-.resource-card p {
-font-size: 0.85rem; color: #4a5a7a;
-padding: 0 1.25rem 1.25rem; line-height: 1.6;
-}
-.resource-link {
-display: flex; align-items: center; gap: 0.4rem;
-padding: 0.9rem 1.25rem;
-border-top: 1px solid rgba(10,22,40,0.14);
-color: #1a52d4; font-size: 0.85rem; font-weight: 500;
-text-decoration: none; transition: gap 0.2s;
-}
+.resources-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.resource-card { background: #fff; border: 1px solid rgba(10,22,40,0.10); border-radius: 12px; overflow: hidden; transition: all 0.3s; box-shadow: 0 2px 10px rgba(10,22,40,0.05); display: flex; flex-direction: column; }
+.resource-card:hover { transform: translateY(-4px); border-color: #1a52d4; box-shadow: 0 12px 32px rgba(10,22,40,0.10); }
+.resource-body { padding: 1.5rem; flex: 1; }
+.resource-tag { display: inline-block; background: rgba(26,82,212,0.08); color: #1a52d4; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; padding: 0.28rem 0.7rem; border-radius: 4px; margin-bottom: 0.75rem; }
+.resource-card h4 { font-size: 0.97rem; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; line-height: 1.4; }
+.resource-card p { font-size: 0.84rem; color: #4a5a7a; line-height: 1.65; }
+.resource-link { display: flex; align-items: center; gap: 0.4rem; padding: 1rem 1.5rem; border-top: 1px solid rgba(10,22,40,0.08); color: #1a52d4; font-size: 0.84rem; font-weight: 600; text-decoration: none; transition: gap 0.2s; }
 .resource-link:hover { gap: 0.7rem; }
 
-/* ─── CONTACT / FORMS ─── */
+/* ── CONTACT ── */
 #contact { background: #f8f9fc; }
-.contact-grid {
-display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start;
-}
-.contact-info h3 {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.4rem; margin-bottom: 1rem; color: #0a1628;
-}
-.contact-info p { color: #4a5a7a; font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem; }
-.contact-detail {
-display: flex; align-items: center; gap: 0.75rem;
-font-size: 0.88rem; color: #4a5a7a; margin-bottom: 0.75rem;
-}
-.contact-detail span:first-child { font-size: 1rem; }
-.contact-detail a { color: #4a5a7a; text-decoration: none; }
-.contact-detail a:hover { color: #1a52d4; }
-.form-tabs {
-display: flex; gap: 0.5rem; margin-bottom: 1.75rem;
-border-bottom: 1px solid rgba(10,22,40,0.14); padding-bottom: 1px;
-}
-.tab-btn {
-background: none; border: none; color: #4a5a7a;
-font-size: 0.88rem; font-weight: 500; padding: 0.6rem 1.2rem;
-cursor: pointer; border-bottom: 2px solid transparent;
-transition: all 0.2s; margin-bottom: -1px;
-font-family: ‘DM Sans’, sans-serif;
-}
-.tab-btn.active { color: #1a52d4; border-bottom-color: #1a52d4; }
+.contact-info-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+.cib-card { background: #fff; border: 1px solid rgba(10,22,40,0.10); border-radius: 10px; padding: 1.25rem; display: flex; align-items: flex-start; gap: 0.85rem; box-shadow: 0 2px 8px rgba(10,22,40,0.04); }
+.cib-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+.cib-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #1a52d4; margin-bottom: 0.2rem; }
+.cib-val { font-size: 0.84rem; color: #0a1628; font-weight: 500; line-height: 1.4; }
+.cib-val a { color: #0a1628; text-decoration: none; }
+.cib-val a:hover { color: #1a52d4; }
+
+/* ── FORMS ── */
+.forms-wrap { background: #fff; border: 1px solid rgba(10,22,40,0.10); border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(10,22,40,0.07); }
+.form-tabs { display: flex; gap: 0; margin-bottom: 2rem; border-bottom: 2px solid rgba(10,22,40,0.08); }
+.tab-btn { background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; color: #4a5a7a; font-size: 0.88rem; font-weight: 600; padding: 0.7rem 1.4rem; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
 .tab-btn:hover { color: #0a1628; }
+.tab-btn.active { color: #1a52d4; border-bottom-color: #1a52d4; }
 .form-panel { display: none; }
 .form-panel.active { display: block; }
+.form-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; }
+.form-notice { display: flex; gap: 0.75rem; align-items: flex-start; background: rgba(26,82,212,0.05); border: 1px solid rgba(26,82,212,0.16); border-radius: 8px; padding: 0.9rem 1rem; margin-bottom: 1.5rem; font-size: 0.83rem; color: #4a5a7a; line-height: 1.6; }
+.form-notice .notice-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-group { margin-bottom: 1.1rem; }
-label {
-display: block; font-size: 0.82rem; font-weight: 500;
-color: #4a5a7a; margin-bottom: 0.4rem; letter-spacing: 0.02em;
-}
-input[type=text], input[type=email], input[type=tel],
-input[type=number], select, textarea {
-width: 100%;
-background: #f8f9fc;
-border: 1px solid rgba(10,22,40,0.14);
-border-radius: 8px;
-color: #0a1628;
-padding: 0.75rem 1rem;
-font-size: 0.9rem;
-font-family: ‘DM Sans’, sans-serif;
-outline: none;
-transition: border-color 0.2s;
--webkit-appearance: none;
-box-shadow: 0 1px 4px rgba(10,22,40,0.05);
-}
-input:focus, select:focus, textarea:focus { border-color: #1a52d4; }
-select option { background: #f8f9fc; color: #0a1628; }
+.form-group { margin-bottom: 1rem; }
+label { display: block; font-size: 0.8rem; font-weight: 600; color: #4a5a7a; margin-bottom: 0.38rem; letter-spacing: 0.02em; }
+input[type="text"], input[type="email"], input[type="tel"], select, textarea { width: 100%; background: #f8f9fc; border: 1.5px solid rgba(10,22,40,0.14); border-radius: 7px; color: #0a1628; padding: 0.72rem 0.9rem; font-size: 0.88rem; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus, textarea:focus { border-color: #1a52d4; background: #fff; }
+select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a5a7a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.5rem; }
 textarea { resize: vertical; min-height: 100px; }
-.checkbox-group { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.4rem; }
-.checkbox-label {
-display: flex; align-items: center; gap: 0.5rem;
-font-size: 0.83rem; color: #4a5a7a; cursor: pointer;
-background: #f8f9fc;
-border: 1px solid rgba(10,22,40,0.14);
-border-radius: 6px; padding: 0.4rem 0.8rem;
-transition: all 0.2s;
-}
-.checkbox-label:hover { border-color: #1a52d4; color: #0a1628; }
-.checkbox-label input { accent-color: #1a52d4; }
-.btn-submit {
-width: 100%;
-background: #0a1628; color: #fff;
-border: none; border-radius: 8px;
-padding: 1rem; font-size: 0.95rem; font-weight: 600;
-cursor: pointer; transition: all 0.2s;
-font-family: ‘DM Sans’, sans-serif;
-margin-top: 0.5rem;
-}
-.btn-submit:hover { background: #112240; transform: translateY(-2px); }
-.form-success {
-display: none; text-align: center; padding: 2rem;
-background: rgba(26,82,212,0.05);
-border: 1px solid rgba(26,82,212,0.2);
-border-radius: 10px;
-}
-.form-success h4 { color: #1a52d4; font-size: 1.2rem; margin-bottom: 0.5rem; }
-.form-success p { color: #4a5a7a; font-size: 0.9rem; }
+.checkbox-group { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.35rem; }
+.check-label { display: flex; align-items: center; gap: 0.45rem; font-size: 0.81rem; color: #4a5a7a; cursor: pointer; background: #f8f9fc; border: 1.5px solid rgba(10,22,40,0.12); border-radius: 6px; padding: 0.38rem 0.75rem; transition: all 0.2s; user-select: none; }
+.check-label:hover { border-color: #1a52d4; color: #0a1628; }
+.check-label input { accent-color: #1a52d4; width: 14px; height: 14px; cursor: pointer; }
+.form-privacy { font-size: 0.76rem; color: #8a9bbf; line-height: 1.6; padding: 0.6rem 0.85rem; background: #f8f9fc; border-left: 3px solid rgba(26,82,212,0.2); border-radius: 0 6px 6px 0; margin-bottom: 1rem; margin-top: 0.5rem; }
+.btn-submit { width: 100%; background: #0a1628; color: #fff; border: none; border-radius: 8px; padding: 1rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; letter-spacing: 0.02em; }
+.btn-submit:hover { background: #1a3560; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(10,22,40,0.15); }
+.form-success { display: none; text-align: center; padding: 3rem 2rem; }
+.success-circle { width: 64px; height: 64px; border-radius: 50%; background: rgba(26,82,212,0.08); border: 2px solid #1a52d4; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: #1a52d4; margin: 0 auto 1.25rem; }
+.form-success h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #0a1628; margin-bottom: 0.5rem; }
+.form-success p { font-size: 0.9rem; color: #4a5a7a; line-height: 1.7; max-width: 460px; margin: 0 auto; }
 
-/* ─── PROCESS EXPLAINER ─── */
-.process-explainer {
-background: #f8f9fc;
-border: 1px solid rgba(10,22,40,0.14);
-border-radius: 16px;
-padding: 2.5rem 3rem;
-margin-bottom: 5rem;
-box-shadow: 0 4px 24px rgba(10,22,40,0.06);
-}
-.explainer-header { margin-bottom: 2.5rem; }
-.explainer-badge {
-display: inline-block;
-background: rgba(26,82,212,0.08);
-border: 1px solid rgba(26,82,212,0.2);
-color: #1a52d4;
-font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em;
-text-transform: uppercase;
-padding: 0.4rem 1rem; border-radius: 100px;
-margin-bottom: 0.75rem;
-}
-.explainer-sub {
-color: #4a5a7a; font-size: 0.95rem; line-height: 1.7;
-max-width: 680px;
-}
-.explainer-steps { display: flex; flex-direction: column; }
-.explainer-step {
-display: flex; gap: 1.5rem; align-items: flex-start;
-padding: 1.5rem;
-border-radius: 10px;
-transition: background 0.2s;
-}
-.explainer-step:hover { background: #edf0f7; }
-.explainer-icon {
-font-size: 1.6rem;
-width: 52px; height: 52px; min-width: 52px;
-background: rgba(26,82,212,0.07);
-border: 1px solid rgba(26,82,212,0.15);
-border-radius: 12px;
-display: flex; align-items: center; justify-content: center;
-}
-.explainer-num {
-font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-text-transform: uppercase; color: #1a52d4;
-margin-bottom: 0.3rem;
-}
-.explainer-content h4 {
-font-size: 1rem; font-weight: 600; color: #0a1628;
-margin-bottom: 0.4rem;
-}
-.explainer-content p {
-font-size: 0.88rem; color: #4a5a7a; line-height: 1.7;
-}
-.explainer-content strong { color: #0a1628; font-weight: 600; }
-.explainer-note {
-margin-top: 0.75rem;
-background: rgba(200,100,50,0.07);
-border: 1px solid rgba(200,100,50,0.2);
-color: #8a4020;
-font-size: 0.82rem; font-weight: 500;
-padding: 0.5rem 0.9rem; border-radius: 6px;
-display: inline-block;
-}
-.explainer-connector {
-width: 2px; height: 28px;
-background: rgba(10,22,40,0.14);
-margin-left: 25px;
-}
-.sub-heading {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.4rem; font-weight: 700;
-color: #0a1628;
-margin-bottom: 2.5rem;
-}
-.sub-heading em { color: #1a52d4; font-style: normal; }
+/* ── CTA BANNER ── */
+.cta-banner { background: #0a1628; border-radius: 16px; padding: 3rem; text-align: center; margin-top: 3.5rem; }
+.cta-banner h3 { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: #f8f9fc; margin-bottom: 0.75rem; }
+.cta-banner p { color: rgba(255,255,255,0.60); font-size: 0.95rem; margin-bottom: 1.75rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+.btn-cta-light { background: #fff; color: #0a1628; padding: 0.85rem 2rem; border-radius: 8px; font-size: 0.92rem; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.2s; }
+.btn-cta-light:hover { background: #edf0f7; transform: translateY(-2px); }
 
-/* ─── FORM NOTICE ─── */
-.form-notice {
-display: flex; gap: 0.75rem; align-items: flex-start;
-background: rgba(26,82,212,0.05);
-border: 1px solid rgba(26,82,212,0.18);
-border-radius: 8px;
-padding: 0.9rem 1rem;
-margin-bottom: 1.25rem;
-font-size: 0.84rem; color: #4a5a7a; line-height: 1.6;
-}
-.form-notice span { font-size: 1rem; margin-top: 0.1rem; }
-.form-notice p { margin: 0; }
-
-/* ─── AUDIT CTA ─── */
-.audit-cta {
-background: #0a1628;
-border: 1px solid rgba(255,255,255,0.06);
-border-radius: 16px;
-padding: 3rem;
-text-align: center;
-margin-top: 5rem;
-}
-.audit-cta h3 {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.8rem; margin-bottom: 0.75rem; color: #f8f9fc;
-}
-.audit-cta p { color: rgba(255,255,255,0.65); margin-bottom: 1.75rem; font-size: 0.95rem; }
-.audit-cta .btn-primary {
-background: #fff; color: #0a1628;
-}
-.audit-cta .btn-primary:hover { background: #edf0f7; }
-
-/* ─── FOOTER ─── */
-footer {
-background: #0a1628 !important;
-border-top: 1px solid rgba(255,255,255,0.06);
-padding: 4rem 5% 2rem;
-}
-.footer-grid {
-display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-gap: 3rem; margin-bottom: 3rem;
-}
-.footer-brand p { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.7; margin-top: 1rem; }
-.footer-brand .nav-logo { color: #f8f9fc !important; letter-spacing: -0.01em; }
-.footer-brand .nav-logo sup { color: rgba(255,255,255,0.5) !important; }
-.footer-brand .nav-logo span { color: #7eb3ff !important; }
-.footer-col h5 {
-font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
-text-transform: uppercase; color: #c8a96e; margin-bottom: 1rem;
-}
-.footer-col a {
-display: block; color: rgba(255,255,255,0.5); text-decoration: none;
-font-size: 0.85rem; margin-bottom: 0.6rem; transition: color 0.2s;
-}
+/* ── FOOTER ── */
+footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #f8f9fc; margin-bottom: 0.75rem; }
+.footer-brand-name .rx { color: #7eb3ff; }
+.footer-desc { font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.75; }
+.footer-col-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #c8a96e; margin-bottom: 1rem; }
+.footer-col a { display: block; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.84rem; margin-bottom: 0.6rem; transition: color 0.2s; }
 .footer-col a:hover { color: #f8f9fc; }
-.footer-bottom {
-border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;
-display: flex; justify-content: space-between; align-items: center;
-font-size: 0.8rem; color: rgba(255,255,255,0.45);
-}
-.disclaimer {
-font-size: 0.75rem; color: #4a5a7a;
-padding: 1rem 5%;
-background: #f0f2f7;
-text-align: center; line-height: 1.6;
-border-top: 1px solid rgba(10,22,40,0.12);
-}
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: rgba(255,255,255,0.35); flex-wrap: wrap; gap: 0.5rem; }
+.disclaimer-bar { background: #060d1a !important; padding: 1rem 5%; text-align: center; font-size: 0.74rem; color: rgba(255,255,255,0.30); line-height: 1.65; border-top: 1px solid rgba(255,255,255,0.05); }
 
-/* ─── SERVICE LIST ─── */
-.service-list {
-margin-top: 0.9rem;
-padding-left: 0;
-list-style: none;
-}
-.service-list li {
-font-size: 0.83rem; color: #4a5a7a;
-padding: 0.3rem 0;
-border-bottom: 1px solid rgba(10,22,40,0.06);
-display: flex; align-items: center; gap: 0.5rem;
-}
-.service-list li:last-child { border-bottom: none; }
-.service-list li::before {
-content: “→”; color: #1a52d4;
-font-size: 0.75rem; font-weight: 700;
-flex-shrink: 0;
-}
+/* ── TOOLTIP ── */
+.tooltip-wrap { position: relative; display: inline-flex; align-items: center; margin-left: 0.4rem; vertical-align: middle; }
+.tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: 50%; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); font-size: 0.72rem; cursor: help; font-style: normal; line-height: 1; transition: background 0.2s; }
+.tooltip-wrap:hover .tooltip-icon { background: rgba(255,255,255,0.28); color: #fff; }
+.tooltip-text { visibility: hidden; opacity: 0; position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #0a1628; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); font-size: 0.76rem; line-height: 1.55; padding: 0.6rem 0.85rem; border-radius: 8px; width: 240px; pointer-events: none; transition: opacity 0.2s; z-index: 50; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.tooltip-text::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: rgba(255,255,255,0.12); }
+.tooltip-text::before { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: #0a1628; z-index: 1; }
+.tooltip-wrap:hover .tooltip-text { visibility: visible; opacity: 1; }
 
-/* ─── CONTACT BAR ─── */
-.contact-bar {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-gap: 1.25rem;
-margin-bottom: 3rem;
-}
-.contact-bar-item {
-display: flex; align-items: flex-start; gap: 1rem;
-background: #fff;
-border: 1px solid rgba(10,22,40,0.12);
-border-radius: 10px;
-padding: 1.25rem 1.5rem;
-box-shadow: 0 2px 8px rgba(10,22,40,0.05);
-}
-.contact-bar-icon { font-size: 1.4rem; }
-.contact-bar-label {
-font-size: 0.75rem; font-weight: 600;
-text-transform: uppercase; letter-spacing: 0.08em;
-color: #1a52d4; margin-bottom: 0.2rem;
-}
-.contact-bar-val { font-size: 0.88rem; color: #0a1628; font-weight: 500; }
-
-/* ─── FORMS CONTAINER ─── */
-.forms-container {
-background: #fff;
-border: 1px solid rgba(10,22,40,0.12);
-border-radius: 16px;
-padding: 2.5rem;
-box-shadow: 0 4px 24px rgba(10,22,40,0.07);
-margin-bottom: 3rem;
-}
-.form-section-title {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.2rem; font-weight: 700;
-color: #0a1628; margin-bottom: 1.25rem;
-padding-bottom: 0.75rem;
-border-bottom: 2px solid rgba(26,82,212,0.12);
-}
-.form-privacy {
-font-size: 0.78rem; color: #8a9bbf;
-margin-bottom: 1rem; line-height: 1.5;
-padding: 0.6rem 0.9rem;
-background: #f8f9fc;
-border-radius: 6px;
-border-left: 3px solid rgba(26,82,212,0.2);
-}
-.form-success {
-display: none; text-align: center; padding: 3rem 2rem;
-background: rgba(26,82,212,0.04);
-border: 1px solid rgba(26,82,212,0.18);
-border-radius: 12px;
-}
-.success-icon {
-width: 60px; height: 60px; border-radius: 50%;
-background: rgba(26,82,212,0.1);
-border: 2px solid #1a52d4;
-display: flex; align-items: center; justify-content: center;
-font-size: 1.5rem; font-weight: 700; color: #1a52d4;
-margin: 0 auto 1rem;
-}
-.form-success h4 { color: #0a1628; font-size: 1.3rem; margin-bottom: 0.5rem; }
-.form-success p { color: #4a5a7a; font-size: 0.9rem; line-height: 1.7; max-width: 480px; margin: 0 auto; }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
-.why-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
-.process-steps::before { display: none; }
-.hero-stats { gap: 1.5rem; }
-.form-row { grid-template-columns: 1fr; }
-nav .nav-links { display: none; }
-}
-@media (max-width: 600px) {
-section { padding: 70px 5%; }
-.hero-stats { flex-direction: column; gap: 1rem; }
-.footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-}
-
-/* Scroll animations */
-.fade-up {
-opacity: 0; transform: translateY(28px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
+/* ── ANIMATIONS ── */
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
-</style>
 
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .industries-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .contact-info-bar { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 4%; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  section { padding: 70px 4%; }
+  .services-grid { grid-template-columns: 1fr; }
+  .industries-grid { grid-template-columns: 1fr; }
+  .resources-grid { grid-template-columns: 1fr; }
+  .process-timeline { grid-template-columns: 1fr; gap: 1.5rem; }
+  .process-timeline::before { display: none; }
+  .hero-stats { gap: 1.5rem; }
+  .contact-info-bar { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .forms-wrap { padding: 1.5rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .form-tabs { overflow-x: auto; }
+  .tab-btn { font-size: 0.82rem; padding: 0.65rem 1rem; }
+}
+@media (max-width: 480px) {
+  h1 { font-size: 1.9rem; }
+  .hero-ctas { flex-direction: column; }
+  .btn-primary, .btn-outline { width: 100%; text-align: center; }
+}
+</style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
-
+<!-- ══ NAV ══ -->
 <nav>
-  <div class="nav-logo">Meridian <span>Rx</span> Advisors<sup style="font-size:0.55em;vertical-align:super;font-family:sans-serif;font-weight:400;color:#4a5a7a;">™</sup></div>
+  <a href="#" class="nav-logo">Meridian <span class="rx">Rx</span> Advisors<sup>&#8482;</sup></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
     <li><a href="#industries">Industries</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#resources">Resources</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="btn-nav">Get Started</a>
+  <a href="#contact" class="nav-cta">Get Started</a>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#why" onclick="toggleMenu()">Why Us</a>
+  <a href="#industries" onclick="toggleMenu()">Industries</a>
+  <a href="#process" onclick="toggleMenu()">Process</a>
+  <a href="#resources" onclick="toggleMenu()">Resources</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:#1a52d4;font-weight:700;">Get Started &#8594;</a>
+</div>
 
-<!-- ─── HERO ─── -->
-
+<!-- ══ HERO ══ -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-badge">Meridian Rx Advisors™ · AI-Powered Healthcare M&A · 2026</div>
-    <h1>AI-Enhanced M&A for<br>Health System &<br><em>Specialty Pharmacies</em></h1>
-    <p class="hero-sub">Specializing in AI-driven deal sourcing, valuation models, 340B strategy, and full-cycle advisory for health systems, PE firms, and pharmacy operators navigating today's evolving landscape.</p>
+    <div class="hero-badge">Meridian Rx Advisors&#8482; &middot; AI-Powered Healthcare M&amp;A &middot; 2026</div>
+    <h1>AI-Enhanced M&amp;A for<br>Health System &amp;<br><em>Specialty Pharmacies</em></h1>
+    <p class="hero-sub">Specializing in AI-driven deal sourcing, valuation models, 340B strategy, and full-cycle advisory for health systems, PE firms, and pharmacy operators navigating today&rsquo;s evolving landscape.</p>
     <div class="hero-ctas">
       <a href="#contact" class="btn-primary">Free AI-Augmented Valuation Audit</a>
       <a href="#services" class="btn-outline">Explore Services</a>
@@ -719,138 +288,153 @@ transition: opacity 0.6s ease, transform 0.6s ease;
         <div class="stat-val">AI</div>
         <div class="stat-label">Enhanced Valuation Models</div>
       </div>
+      <div>
+        <div class="stat-val">NDA</div>
+        <div class="stat-label">Protected Process</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ─── SERVICES ─── -->
-
+<!-- ══ SERVICES ══ -->
 <section id="services">
   <div class="section-label">What We Offer</div>
   <h2>Our Core <em>Services</em></h2>
-  <p class="section-intro">End-to-end M&A advisory designed for the complexity of health system pharmacy transactions — powered by AI-driven analysis and decades of real-world deal experience.</p>
-
+  <p class="section-intro">End-to-end M&amp;A advisory designed for the complexity of health system pharmacy transactions &mdash; powered by AI-driven analysis and decades of real-world deal experience.</p>
   <div class="services-grid">
+
     <div class="service-card fade-up">
-      <div class="service-icon">🤖</div>
-      <h3>AI-Enhanced Deal Sourcing & Valuation</h3>
+      <span class="service-icon">&#129302;</span>
+      <h3>AI-Enhanced Deal Sourcing &amp; Valuation</h3>
       <p>Predictive modeling of script retention, synergies, 340B impacts, and AI/tech efficiencies to deliver accurate, defensible valuations.</p>
       <ul class="service-list">
-        <li>Script volume & retention modeling</li>
+        <li>Script volume &amp; retention modeling</li>
         <li>340B program impact quantification</li>
-        <li>AI-driven synergy & efficiency analysis</li>
-        <li>Market comp benchmarking</li>
+        <li>AI-driven synergy &amp; efficiency analysis</li>
+        <li>Market comparable benchmarking</li>
         <li>Preliminary valuation range delivery</li>
       </ul>
     </div>
+
     <div class="service-card fade-up">
-      <div class="service-icon">📊</div>
-      <h3>Comprehensive Due Diligence & P&L Normalization</h3>
+      <span class="service-icon">&#128202;</span>
+      <h3>Comprehensive Due Diligence &amp; P&amp;L Normalization</h3>
       <p>Full financial review and risk assessment drawing from Walgreens-scale deal experience to surface hidden value and risk.</p>
       <ul class="service-list">
-        <li>Full P&L normalization & EBITDA analysis</li>
-        <li>Patient segment isolation & payer mix review</li>
-        <li>Lease, contract & liability assessment</li>
+        <li>Full P&amp;L normalization &amp; EBITDA analysis</li>
+        <li>Patient segment isolation &amp; payer mix review</li>
+        <li>Lease, contract &amp; liability assessment</li>
         <li>Cross-functional coordination support</li>
-        <li>Risk identification & mitigation planning</li>
+        <li>Risk identification &amp; mitigation planning</li>
       </ul>
     </div>
+
     <div class="service-card fade-up">
-      <div class="service-icon">🔍</div>
-      <h3>Negotiation & Deal Closure Support</h3>
+      <span class="service-icon">&#128269;</span>
+      <h3>Negotiation &amp; Deal Closure Support</h3>
       <p>Leading term sheets, counteroffers, and closings to achieve above-hurdle IRR outcomes in competitive environments.</p>
       <ul class="service-list">
-        <li>LOI structuring & term sheet drafting</li>
-        <li>Counteroffer strategy & negotiation support</li>
+        <li>LOI structuring &amp; term sheet drafting</li>
+        <li>Counteroffer strategy &amp; negotiation support</li>
         <li>Above-IRR outcome targeting</li>
-        <li>Closing coordination & timeline management</li>
+        <li>Closing coordination &amp; timeline management</li>
         <li>Multi-party deal navigation</li>
       </ul>
     </div>
+
     <div class="service-card fade-up">
-      <div class="service-icon">🤝</div>
+      <span class="service-icon">&#129309;</span>
       <h3>Strategic Partnership Advisory</h3>
       <p>Structuring JVs, management agreements, and partnership models between health systems and pharmacy operators.</p>
       <ul class="service-list">
-        <li>Joint venture structure & design</li>
+        <li>Joint venture structure &amp; design</li>
         <li>Management agreement negotiation</li>
         <li>Coexistence strategies with existing operators</li>
-        <li>Revenue sharing & governance modeling</li>
+        <li>Revenue sharing &amp; governance modeling</li>
         <li>Long-term partnership optimization</li>
       </ul>
     </div>
+
     <div class="service-card fade-up">
-      <div class="service-icon">⚙️</div>
+      <span class="service-icon">&#9881;&#65039;</span>
       <h3>Post-Transaction Integration Planning</h3>
-      <p>Ensuring smooth transitions, value capture, and operational optimization after close with structured 100-day roadmaps.</p>
+      <p>Ensuring smooth transitions, value capture, and operational optimization after close with 100-day integration roadmaps.</p>
       <ul class="service-list">
         <li>100-day integration roadmap development</li>
         <li>Operational continuity planning</li>
-        <li>Staff & leadership transition support</li>
-        <li>Payer contract & systems integration</li>
-        <li>Value capture tracking & reporting</li>
+        <li>Staff &amp; leadership transition support</li>
+        <li>Payer contract &amp; systems integration</li>
+        <li>Value capture tracking &amp; reporting</li>
       </ul>
     </div>
+
     <div class="service-card fade-up">
-      <div class="service-icon">⚖️</div>
-      <h3>340B Strategy & Compliance Advisory</h3>
+      <span class="service-icon">&#9878;&#65039;</span>
+      <h3>340B Strategy &amp; Compliance Advisory</h3>
       <p>Navigating 340B program evolution, IRA impacts, and regulatory changes as part of deal structuring and ongoing strategy.</p>
       <ul class="service-list">
-        <li>340B program eligibility & impact analysis</li>
-        <li>IRA & regulatory change assessment</li>
-        <li>Contract pharmacy strategy & compliance</li>
-        <li>Covered entity advisory & structuring</li>
+        <li>340B program eligibility &amp; impact analysis</li>
+        <li>IRA &amp; regulatory change assessment</li>
+        <li>Contract pharmacy strategy &amp; compliance</li>
+        <li>Covered entity advisory &amp; structuring</li>
         <li>Ongoing 340B program optimization</li>
       </ul>
     </div>
+
   </div>
 </section>
 
-<!-- ─── WHY US ─── -->
-
+<!-- ══ WHY US ══ -->
 <section id="why">
   <div class="section-label">Why Choose Us</div>
   <h2>Unmatched <em>Expertise</em></h2>
+  <p class="section-intro">We bring institutional-grade advisory capabilities to boutique engagements &mdash; with the sector depth, AI tools, and deal experience your transaction demands.</p>
   <div class="why-grid">
     <div class="why-points">
       <div class="why-point fade-up">
         <div class="why-num">01</div>
         <div class="why-text">
           <h4>Real Deal Experience at Scale</h4>
-          <p>Background in Walgreens SOAR transactions — competing with Shields, isolating patient segments, full P&L adjustments, closing deals above IRR hurdles for health system clients.</p>
+          <p>Background in Walgreens SOAR transactions &mdash; competing with Shields, isolating patient segments, full P&amp;L adjustments, and closing deals above IRR hurdles for health system clients.</p>
         </div>
       </div>
       <div class="why-point fade-up">
         <div class="why-num">02</div>
         <div class="why-text">
           <h4>AI-Augmented Analysis</h4>
-          <p>Proprietary AI tools for rapid valuation modeling, market comp analysis, synergy prediction, and script retention forecasting — delivering insights in days, not weeks.</p>
+          <p>Proprietary AI tools for rapid valuation modeling, market comp analysis, synergy prediction, and script retention forecasting &mdash; delivering insights in days, not weeks.</p>
         </div>
       </div>
       <div class="why-point fade-up">
         <div class="why-num">03</div>
         <div class="why-text">
-          <h4>340B & Regulatory Depth</h4>
-          <p>Deep expertise in 340B program economics, IRA impacts, and evolving specialty pharmacy regulations — critical for accurate deal structuring in 2026 and beyond.</p>
+          <h4>340B &amp; Regulatory Depth</h4>
+          <p>Deep expertise in 340B program economics, IRA impacts, and evolving specialty pharmacy regulations &mdash; critical for accurate deal structuring and defensible valuations in 2026.</p>
         </div>
       </div>
       <div class="why-point fade-up">
         <div class="why-num">04</div>
         <div class="why-text">
           <h4>Aligned Incentives</h4>
-          <p>Our primary fee structure is a 3% success fee — we only win when you win. Engagements may also include a monthly advisory retainer, scoped to the complexity and duration of your project. Fee structures are discussed transparently during your initial consultation.</p>
+          <p>Our primary structure is a 3% success fee &mdash; we only win when you win. Engagements may also include a monthly advisory retainer scoped to project complexity. Fee structures are discussed transparently at consultation.</p>
         </div>
       </div>
     </div>
-    <div class="why-visual fade-up">
+    <div class="why-panel fade-up">
       <h3>Typical Deal Impact</h3>
       <div class="metric-row">
         <span class="metric-label">Valuation Accuracy (AI-Augmented)</span>
-        <span class="metric-val">±3–5%</span>
+        <span class="metric-val">&plusmn;3&ndash;5%</span>
       </div>
       <div class="metric-row">
-        <span class="metric-label">Script Retention Post-Close</span>
-        <span class="metric-val">>85%</span>
+        <span class="metric-label">
+          Eligible Script Retention Post-Close
+          <span class="tooltip-wrap">
+            <span class="tooltip-icon">&#9432;</span>
+            <span class="tooltip-text">Retention of scripts within networks accessible to the acquiring entity post-transaction. Network access varies by buyer and PBM participation.</span>
+          </span>
+        </span>
+        <span class="metric-val">&gt;85%</span>
       </div>
       <div class="metric-row">
         <span class="metric-label">340B Impact Quantified</span>
@@ -866,490 +450,665 @@ transition: opacity 0.6s ease, transform 0.6s ease;
       </div>
       <div class="metric-row">
         <span class="metric-label">Deal Size Range</span>
-        <span class="metric-val">$2M – $250M+</span>
+        <span class="metric-val">$2M &ndash; $250M+</span>
       </div>
       <div class="metric-row">
         <span class="metric-label">Time to LOI</span>
-        <span class="metric-val">45–90 days</span>
+        <span class="metric-val">45&ndash;90 days</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── INDUSTRIES ─── -->
-
+<!-- ══ INDUSTRIES ══ -->
 <section id="industries">
   <div class="section-label">Who We Serve</div>
-  <h2>Industries & <em>Clients</em></h2>
-  <p class="section-intro">We work with buyers, sellers, and strategic partners across the healthcare pharmacy ecosystem — from regional health systems to national PE platforms.</p>
+  <h2>Industries &amp; <em>Clients</em></h2>
+  <p class="section-intro">We work with buyers, sellers, and strategic partners across the healthcare pharmacy ecosystem &mdash; from regional health systems to national PE platforms.</p>
   <div class="industries-grid">
     <div class="industry-card fade-up">
-      <div class="industry-icon">🏥</div>
+      <span class="industry-icon">&#127973;</span>
       <div>
         <h4>Health System Pharmacies</h4>
-        <p>Outpatient, infusion, and specialty pharmacy divisions seeking to sell, acquire, or partner.</p>
+        <p>Outpatient, infusion, and specialty pharmacy divisions seeking to sell, acquire, or structure strategic partnerships with best-in-class operators.</p>
       </div>
     </div>
     <div class="industry-card fade-up">
-      <div class="industry-icon">💊</div>
+      <span class="industry-icon">&#128138;</span>
       <div>
         <h4>Specialty Pharmacy Operators</h4>
-        <p>Independent and regional specialty pharmacies exploring growth, exit, or hospital partnerships.</p>
+        <p>Independent and regional specialty pharmacies exploring growth through acquisition, exit strategies, or hospital system partnership models.</p>
       </div>
     </div>
     <div class="industry-card fade-up">
-      <div class="industry-icon">💼</div>
+      <span class="industry-icon">&#128188;</span>
       <div>
         <h4>Private Equity Firms</h4>
-        <p>PE sponsors seeking sector expertise, add-on acquisitions, or portfolio optimization in pharmacy.</p>
+        <p>PE sponsors seeking deep sector expertise for platform builds, add-on acquisitions, or portfolio optimization in health system pharmacy.</p>
       </div>
     </div>
     <div class="industry-card fade-up">
-      <div class="industry-icon">🏦</div>
+      <span class="industry-icon">&#127978;</span>
       <div>
         <h4>Investment Banks</h4>
-        <p>I-banks seeking specialty pharmacy sector expertise and deal support on the buy or sell side.</p>
+        <p>I-banks seeking specialty pharmacy sector expertise and deal execution support on the buy side, sell side, or fairness opinion engagements.</p>
       </div>
     </div>
     <div class="industry-card fade-up">
-      <div class="industry-icon">🏢</div>
+      <span class="industry-icon">&#127962;</span>
       <div>
-        <h4>PBMs & Health Plans</h4>
-        <p>Payer and PBM organizations evaluating pharmacy asset acquisitions or strategic partnerships.</p>
+        <h4>PBMs &amp; Health Plans</h4>
+        <p>Payer and PBM organizations evaluating pharmacy asset acquisitions, vertical integration strategies, or network partnership structures.</p>
       </div>
     </div>
     <div class="industry-card fade-up">
-      <div class="industry-icon">🤝</div>
+      <span class="industry-icon">&#129309;</span>
       <div>
         <h4>Pharmacy Services Companies</h4>
-        <p>PSAOs, GPOs, and pharmacy service organizations exploring M&A for growth or consolidation.</p>
+        <p>PSAOs, GPOs, and pharmacy service organizations exploring M&amp;A for growth, market consolidation, or strategic repositioning.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── PROCESS ─── -->
-
+<!-- ══ PROCESS ══ -->
 <section id="process">
   <div class="section-label">How It Works</div>
   <h2>Our <em>Process</em></h2>
-  <p class="section-intro">A structured, confidential advisory process — from your first inquiry through a closed deal. Every step is designed to protect your information and maximize your outcome.</p>
-
-  <!-- Valuation Process Explainer -->
+  <p class="section-intro">A structured, confidential advisory process &mdash; from your first inquiry through a closed deal. Every step is designed to protect your information and maximize your outcome.</p>
 
   <div class="process-explainer fade-up">
-    <div class="explainer-header">
-      <div class="explainer-badge">Free Valuation Audit — How It Works</div>
-      <p class="explainer-sub">Your valuation accuracy depends entirely on the quality of data we analyze together. Here's exactly what to expect — and how we protect your information at every stage.</p>
+    <div class="explainer-badge">Free Valuation Audit &mdash; Step by Step</div>
+    <p class="explainer-sub">Your valuation accuracy depends on the quality of data we analyze together. Here&rsquo;s exactly what to expect &mdash; and how we protect your information at every stage.</p>
+
+    <div class="explainer-step">
+      <div class="explainer-step-icon">&#128203;</div>
+      <div>
+        <div class="explainer-step-num">Step 1</div>
+        <h4>Submit High-Level Information</h4>
+        <p>Your intake form captures only non-sensitive, high-level details &mdash; pharmacy type, approximate revenue range, and transaction interest. <strong>No proprietary data is requested or shared at this stage.</strong></p>
+      </div>
     </div>
-    <div class="explainer-steps">
+    <div class="explainer-connector"></div>
 
-```
-  <div class="explainer-step">
-    <div class="explainer-icon">📋</div>
-    <div class="explainer-content">
-      <div class="explainer-num">Step 1</div>
-      <h4>Submit High-Level Information</h4>
-      <p>Your intake form captures only non-sensitive, high-level details — pharmacy type, approximate revenue range, and transaction interest. <strong>No proprietary data is requested or shared at this stage.</strong></p>
+    <div class="explainer-step">
+      <div class="explainer-step-icon">&#128222;</div>
+      <div>
+        <div class="explainer-step-num">Step 2</div>
+        <h4>Complimentary Discovery Call</h4>
+        <p>We schedule a 30&ndash;45 minute call to discuss your situation, goals, and timeline. We&rsquo;ll share our methodology and a sample valuation framework. This is a no-obligation, no-data conversation focused entirely on fit and strategy.</p>
+      </div>
     </div>
-  </div>
+    <div class="explainer-connector"></div>
 
-  <div class="explainer-connector"></div>
-
-  <div class="explainer-step">
-    <div class="explainer-icon">📞</div>
-    <div class="explainer-content">
-      <div class="explainer-num">Step 2</div>
-      <h4>Complimentary Discovery Call</h4>
-      <p>We schedule a 30–45 minute call to discuss your situation, goals, and timeline. We'll share our methodology and a sample valuation framework. This is a no-obligation, no-data conversation — focused on fit and strategy.</p>
+    <div class="explainer-step">
+      <div class="explainer-step-icon">&#128274;</div>
+      <div>
+        <div class="explainer-step-num">Step 3</div>
+        <h4>Mutual NDA Execution</h4>
+        <p>Before any proprietary data is exchanged, we execute a mutual Non-Disclosure Agreement via secure e-signature. This protects both parties and establishes the confidential foundation required for accurate analysis.</p>
+        <span class="nda-warning">&#9888;&#65039; We never request sensitive financial, operational, or patient data prior to a signed NDA.</span>
+      </div>
     </div>
-  </div>
+    <div class="explainer-connector"></div>
 
-  <div class="explainer-connector"></div>
-
-  <div class="explainer-step">
-    <div class="explainer-icon">🔒</div>
-    <div class="explainer-content">
-      <div class="explainer-num">Step 3</div>
-      <h4>Mutual NDA Execution</h4>
-      <p>Before any proprietary data is exchanged, we execute a mutual Non-Disclosure Agreement via secure e-signature. This protects both parties and establishes the confidential foundation required for accurate analysis. Only then do we proceed to data sharing.</p>
-      <div class="explainer-note">⚠️ We never request sensitive financial, operational, or patient data prior to a signed NDA.</div>
+    <div class="explainer-step">
+      <div class="explainer-step-icon">&#128194;</div>
+      <div>
+        <div class="explainer-step-num">Step 4</div>
+        <h4>Structured Data Request</h4>
+        <p>Post-NDA, we provide a tailored data request checklist covering script volume and mix, payer contracts, 340B program details, P&amp;L statements, and lease/operational agreements. Our AI-augmented analysis begins here &mdash; and we work collaboratively to clarify assumptions and fill data gaps.</p>
+      </div>
     </div>
-  </div>
+    <div class="explainer-connector"></div>
 
-  <div class="explainer-connector"></div>
-
-  <div class="explainer-step">
-    <div class="explainer-icon">📂</div>
-    <div class="explainer-content">
-      <div class="explainer-num">Step 4</div>
-      <h4>Structured Data Request</h4>
-      <p>Post-NDA, we provide a tailored data request checklist covering script volume and mix, payer contracts, 340B program details, P&L statements, and lease/operational agreements. Our AI-augmented analysis begins here — and we work collaboratively with your team to clarify assumptions and fill data gaps.</p>
+    <div class="explainer-step">
+      <div class="explainer-step-icon">&#128202;</div>
+      <div>
+        <div class="explainer-step-num">Step 5</div>
+        <h4>Preliminary Valuation Delivery</h4>
+        <p>We deliver a written preliminary valuation range with key assumptions, 340B impact analysis, script retention modeling, and noted sensitivities &mdash; giving you a defensible, data-driven benchmark before any decisions are made.</p>
+      </div>
     </div>
-  </div>
+    <div class="explainer-connector"></div>
 
-  <div class="explainer-connector"></div>
-
-  <div class="explainer-step">
-    <div class="explainer-icon">📊</div>
-    <div class="explainer-content">
-      <div class="explainer-num">Step 5</div>
-      <h4>Preliminary Valuation Delivery</h4>
-      <p>We deliver a written preliminary valuation range with key assumptions, 340B impact analysis, script retention modeling, and noted sensitivities. This gives you a defensible, data-driven benchmark — and a clear picture of what drives value in your transaction.</p>
-    </div>
-  </div>
-
-  <div class="explainer-connector"></div>
-
-  <div class="explainer-step">
-    <div class="explainer-icon">🤝</div>
-    <div class="explainer-content">
-      <div class="explainer-num">Step 6</div>
-      <h4>Full Engagement (Optional)</h4>
-      <p>If you choose to move forward, we formalize the engagement — defining scope, deal strategy, buyer/seller outreach, and full due diligence support through negotiation and close. No pressure, no obligation from the valuation audit itself.</p>
+    <div class="explainer-step">
+      <div class="explainer-step-icon">&#129309;</div>
+      <div>
+        <div class="explainer-step-num">Step 6</div>
+        <h4>Full Engagement (Optional)</h4>
+        <p>If you choose to move forward, we formalize the engagement &mdash; defining scope, deal strategy, buyer/seller outreach, and full due diligence support through negotiation and close. No pressure or obligation from the valuation audit itself.</p>
+      </div>
     </div>
   </div>
 
-</div>
-```
-
-  </div>
-
-  <!-- Deal Process Timeline -->
-
-  <h3 class="sub-heading fade-up">Full Advisory <em>Engagement</em> Timeline</h3>
-  <div class="process-steps">
+  <p class="process-subhead">Full Advisory <em>Engagement</em> Timeline</p>
+  <div class="process-timeline">
     <div class="process-step fade-up">
-      <div class="step-num">1</div>
-      <h4>Intake & NDA</h4>
-      <p>Form submission, discovery call, and mutual NDA execution — before any sensitive data is shared.</p>
+      <div class="step-circle">1</div>
+      <h4>Intake &amp; NDA</h4>
+      <p>Form submission, discovery call, and mutual NDA execution &mdash; before any sensitive data is shared.</p>
     </div>
     <div class="process-step fade-up">
-      <div class="step-num">2</div>
-      <h4>Valuation & Strategy</h4>
+      <div class="step-circle">2</div>
+      <h4>Valuation &amp; Strategy</h4>
       <p>AI-augmented valuation model, 340B analysis, and tailored deal strategy with your leadership team.</p>
     </div>
     <div class="process-step fade-up">
-      <div class="step-num">3</div>
+      <div class="step-circle">3</div>
       <h4>Market Outreach</h4>
       <p>Confidential buyer/seller identification, AI-powered deal sourcing, and structured outreach management.</p>
     </div>
     <div class="process-step fade-up">
-      <div class="step-num">4</div>
+      <div class="step-circle">4</div>
       <h4>Due Diligence</h4>
-      <p>Full P&L normalization, patient segment review, payer contract analysis, and risk quantification.</p>
+      <p>Full P&amp;L normalization, patient segment review, payer contract analysis, and risk quantification.</p>
     </div>
     <div class="process-step fade-up">
-      <div class="step-num">5</div>
-      <h4>Negotiation & Close</h4>
+      <div class="step-circle">5</div>
+      <h4>Negotiation &amp; Close</h4>
       <p>LOI structuring, counteroffers, closing coordination, and post-close integration planning.</p>
     </div>
   </div>
 </section>
 
-<!-- ─── RESOURCES ─── -->
-
+<!-- ══ RESOURCES ══ -->
 <section id="resources">
-  <div class="section-label">Insights & Tools</div>
+  <div class="section-label">Insights &amp; Tools</div>
   <h2>Resources for <em>Healthcare Leaders</em></h2>
-  <p class="section-intro">Thought leadership, market intelligence, and practical tools for healthcare finance executives navigating pharmacy M&A in 2026.</p>
+  <p class="section-intro">Thought leadership, market intelligence, and practical tools for healthcare finance executives navigating pharmacy M&amp;A in 2026.</p>
   <div class="resources-grid">
     <div class="resource-card fade-up">
-      <span class="resource-tag">Market Report</span>
-      <h4>2026 Specialty Pharmacy M&A Outlook</h4>
-      <p>PwC and sector data on why specialty pharmacy is one of the hottest M&A subsectors — and what it means for valuations and deal timelines.</p>
-      <a href="#contact" class="resource-link">Download Report →</a>
+      <div class="resource-body">
+        <span class="resource-tag">Market Report</span>
+        <h4>2026 Specialty Pharmacy M&amp;A Outlook</h4>
+        <p>PwC and sector data on why specialty pharmacy is one of the hottest M&amp;A subsectors in healthcare &mdash; and what it means for valuations, deal timelines, and buyer appetite in the current market.</p>
+      </div>
+      <a href="#contact" class="resource-link">Download Report &#8594;</a>
     </div>
     <div class="resource-card fade-up">
-      <span class="resource-tag">Guide</span>
-      <h4>340B in M&A: What Buyers & Sellers Must Know in 2026</h4>
-      <p>How IRA changes and 340B evolution are reshaping deal terms, valuation models, and due diligence requirements for covered entities.</p>
-      <a href="#contact" class="resource-link">Get the Guide →</a>
+      <div class="resource-body">
+        <span class="resource-tag">Guide</span>
+        <h4>340B in M&amp;A: What Buyers &amp; Sellers Must Know in 2026</h4>
+        <p>How IRA changes and 340B program evolution are reshaping deal terms, valuation models, and due diligence requirements for covered entities and contract pharmacies navigating transactions today.</p>
+      </div>
+      <a href="#contact" class="resource-link">Get the Guide &#8594;</a>
     </div>
     <div class="resource-card fade-up">
-      <span class="resource-tag">Tool</span>
-      <h4>Free AI-Augmented Valuation Audit</h4>
-      <p>Get a preliminary, AI-powered valuation range for your pharmacy asset — no commitment, no cost. Includes script retention modeling and 340B impact assessment.</p>
-      <a href="#contact" class="resource-link">Request Audit →</a>
+      <div class="resource-body">
+        <span class="resource-tag">Free Tool</span>
+        <h4>Free AI-Augmented Valuation Audit</h4>
+        <p>Get a preliminary, AI-powered valuation range for your pharmacy asset &mdash; no commitment, no cost. Includes script retention modeling, 340B impact assessment, and a market comp summary delivered to you directly.</p>
+      </div>
+      <a href="#contact" class="resource-link">Request Audit &#8594;</a>
     </div>
     <div class="resource-card fade-up">
-      <span class="resource-tag">Webinar</span>
-      <h4>How AI is Transforming Pharmacy Valuations in 2026</h4>
-      <p>On-demand session covering AI-enhanced deal sourcing, predictive modeling, and what PE firms are looking for in pharmacy assets in 2026.</p>
-      <a href="#contact" class="resource-link">Watch Now →</a>
+      <div class="resource-body">
+        <span class="resource-tag">Webinar</span>
+        <h4>How AI is Transforming Pharmacy Valuations in 2026</h4>
+        <p>On-demand session covering AI-enhanced deal sourcing, predictive modeling methodologies, and what PE firms and health systems are prioritizing in pharmacy asset transactions in the current deal environment.</p>
+      </div>
+      <a href="#contact" class="resource-link">Watch Now &#8594;</a>
     </div>
   </div>
 </section>
 
-<!-- ─── CONTACT ─── -->
-
+<!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="section-label">Get In Touch</div>
   <h2>Start the <em>Conversation</em></h2>
-  <p class="section-intro">Whether you're exploring a sale, seeking an acquisition, or need strategic advisory support — we're ready to help. All inquiries are handled confidentially.</p>
+  <p class="section-intro">Whether you&rsquo;re exploring a sale, seeking an acquisition, or need strategic advisory support &mdash; we&rsquo;re ready to help. All inquiries are handled confidentially.</p>
 
-  <!-- Contact Info Bar -->
-
-  <div class="contact-bar fade-up">
-    <div class="contact-bar-item">
-      <span class="contact-bar-icon">📍</span>
+  <div class="contact-info-bar fade-up">
+    <div class="cib-card">
+      <span class="cib-icon">&#128205;</span>
       <div>
-        <div class="contact-bar-label">Location</div>
-        <div class="contact-bar-val">Lake Villa, IL · Serving Clients Nationally</div>
+        <div class="cib-label">Location</div>
+        <div class="cib-val">Lake Villa, IL &middot; Serving Clients Nationally</div>
       </div>
     </div>
-    <div class="contact-bar-item">
-      <span class="contact-bar-icon">✉️</span>
+    <div class="cib-card">
+      <span class="cib-icon">&#9993;&#65039;</span>
       <div>
-        <div class="contact-bar-label">Email</div>
-        <div class="contact-bar-val"><a href="mailto:matthewjohnson@meridianrxadvisors.com" style="color:#0a1628;text-decoration:none;">matthewjohnson@meridianrxadvisors.com</a></div>
+        <div class="cib-label">Email</div>
+        <div class="cib-val"><a href="/cdn-cgi/l/email-protection#177a7663637f72607d787f79647879577a72657e737e7679656f7673617e647865643974787a">matthewjohnson&#64;meridianrxadvisors.com</a></div>
       </div>
     </div>
-    <div class="contact-bar-item">
-      <span class="contact-bar-icon">💼</span>
+    <div class="cib-card">
+      <span class="cib-icon">&#128188;</span>
       <div>
-        <div class="contact-bar-label">Travel</div>
-        <div class="contact-bar-val">Available Nationwide for Client Engagements</div>
+        <div class="cib-label">Travel</div>
+        <div class="cib-val">Available Nationwide for Client Engagements</div>
       </div>
     </div>
-    <div class="contact-bar-item">
-      <span class="contact-bar-icon">⏱️</span>
+    <div class="cib-card">
+      <span class="cib-icon">&#9200;</span>
       <div>
-        <div class="contact-bar-label">Response Time</div>
-        <div class="contact-bar-val">Within 24 Business Hours</div>
+        <div class="cib-label">Response Time</div>
+        <div class="cib-val">Within 24 Business Hours</div>
       </div>
     </div>
   </div>
 
-  <!-- Forms Container -->
-
-  <div class="forms-container fade-up">
+  <div class="forms-wrap fade-up">
     <div class="form-tabs">
-      <button class="tab-btn active" onclick="switchTab('audit')">🔍 Free Valuation Audit</button>
-      <button class="tab-btn" onclick="switchTab('general')">✉️ General Inquiry</button>
-      <button class="tab-btn" onclick="switchTab('pilot')">🚀 Pilot Engagement</button>
+      <button class="tab-btn active" onclick="showTab('audit', this)">&#128269; Free Valuation Audit</button>
+      <button class="tab-btn" onclick="showTab('general', this)">&#9993; General Inquiry</button>
+      <button class="tab-btn" onclick="showTab('pilot', this)">&#128640; Pilot Engagement</button>
     </div>
 
-```
-<!-- AUDIT FORM -->
-<div id="tab-audit" class="form-panel active">
-  <div class="form-section-title">Free AI-Augmented Valuation Audit</div>
-  <div class="form-notice"><span>🔒</span><p>This form collects only high-level, non-sensitive information to schedule your complimentary discovery call. A mutual NDA will be executed before any proprietary pharmacy data or financials are requested or shared.</p></div>
-  <form onsubmit="submitForm(event, 'audit')">
-    <div class="form-row">
-      <div class="form-group"><label>First Name *</label><input type="text" placeholder="First Name" required /></div>
-      <div class="form-group"><label>Last Name *</label><input type="text" placeholder="Last Name" required /></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Email Address *</label><input type="email" placeholder="you@healthsystem.org" required /></div>
-      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(312) 555-0100" /></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Organization / Health System *</label><input type="text" placeholder="Organization Name" required /></div>
-      <div class="form-group"><label>Your Title / Role</label>
-        <select><option value="">Select Role</option><option>C-Suite / CEO / CFO / COO</option><option>VP / Director of Finance</option><option>Pharmacy Director / VP Pharmacy</option><option>Investment Professional (PE / IB)</option><option>Business Development</option><option>Legal / Compliance</option><option>Other</option></select>
+    <!-- ── AUDIT FORM ── -->
+    <div id="tab-audit" class="form-panel active">
+      <div class="form-title">Free AI-Augmented Valuation Audit</div>
+      <div class="form-notice">
+        <span class="notice-icon">&#128274;</span>
+        <span>This form collects only high-level, non-sensitive information to schedule your complimentary discovery call. A mutual NDA will be executed before any proprietary pharmacy data or financials are requested or shared.</span>
+      </div>
+      <form id="form-audit" onsubmit="handleSubmit(event, 'audit')">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="a-fname">First Name *</label>
+            <input type="text" id="a-fname" placeholder="First Name" required>
+          </div>
+          <div class="form-group">
+            <label for="a-lname">Last Name *</label>
+            <input type="text" id="a-lname" placeholder="Last Name" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="a-email">Email Address *</label>
+            <input type="email" id="a-email" placeholder="you@healthsystem.org" required>
+          </div>
+          <div class="form-group">
+            <label for="a-phone">Phone Number</label>
+            <input type="tel" id="a-phone" placeholder="(312) 555-0100">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="a-org">Organization / Health System *</label>
+            <input type="text" id="a-org" placeholder="Organization Name" required>
+          </div>
+          <div class="form-group">
+            <label for="a-role">Your Title / Role</label>
+            <select id="a-role">
+              <option value="">Select Role</option>
+              <option>C-Suite / CEO / CFO / COO</option>
+              <option>VP / Director of Finance</option>
+              <option>Pharmacy Director / VP Pharmacy</option>
+              <option>Investment Professional (PE / IB)</option>
+              <option>Business Development</option>
+              <option>Legal / Compliance</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="a-type">Transaction Type</label>
+            <select id="a-type">
+              <option value="">Select Type</option>
+              <option>Sell-Side (I want to sell)</option>
+              <option>Buy-Side (I want to acquire)</option>
+              <option>Partnership / Joint Venture</option>
+              <option>Strategic Advisory Only</option>
+              <option>Exploring Options &mdash; Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="a-rev">Estimated Annual Pharmacy Revenue</label>
+            <select id="a-rev">
+              <option value="">Select Range</option>
+              <option>Under $5M</option>
+              <option>$5M &ndash; $25M</option>
+              <option>$25M &ndash; $100M</option>
+              <option>$100M &ndash; $500M</option>
+              <option>Over $500M</option>
+              <option>Prefer Not to Disclose</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Pharmacy Type (select all that apply)</label>
+          <div class="checkbox-group">
+            <label class="check-label"><input type="checkbox"> Outpatient</label>
+            <label class="check-label"><input type="checkbox"> Specialty</label>
+            <label class="check-label"><input type="checkbox"> Infusion</label>
+            <label class="check-label"><input type="checkbox"> Mail Order</label>
+            <label class="check-label"><input type="checkbox"> 340B</label>
+            <label class="check-label"><input type="checkbox"> Retail</label>
+            <label class="check-label"><input type="checkbox"> Compounding</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="a-locs">Number of Pharmacy Locations</label>
+            <select id="a-locs">
+              <option value="">Select Range</option>
+              <option>1 location</option>
+              <option>2&ndash;5 locations</option>
+              <option>6&ndash;15 locations</option>
+              <option>16&ndash;50 locations</option>
+              <option>50+ locations</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="a-timeline">Target Transaction Timeline</label>
+            <select id="a-timeline">
+              <option value="">Select Timeline</option>
+              <option>Immediate (0&ndash;3 months)</option>
+              <option>Near-term (3&ndash;6 months)</option>
+              <option>Planning ahead (6&ndash;12 months)</option>
+              <option>Exploratory &mdash; No set timeline</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="a-340b">340B Program Participation</label>
+          <select id="a-340b">
+            <option value="">Select Status</option>
+            <option>Yes &mdash; Active 340B Covered Entity</option>
+            <option>Yes &mdash; Contract Pharmacy Only</option>
+            <option>No &mdash; Not Currently Participating</option>
+            <option>Previously Participated</option>
+            <option>Under Review / Uncertain</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="a-context">Additional Context or Questions</label>
+          <textarea id="a-context" placeholder="Tell us about your situation, key drivers, timeline, or any specific questions. The more context you provide, the more targeted our initial outreach will be..." style="min-height:110px;"></textarea>
+        </div>
+        <div class="form-privacy">By submitting this form, you agree that your information will be used solely to respond to your inquiry. No data will be shared with third parties. A mutual NDA will be executed before any proprietary information is exchanged.</div>
+        <button type="submit" class="btn-submit">Request My Free Valuation Audit &#8594;</button>
+      </form>
+      <div id="success-audit" class="form-success">
+        <div class="success-circle">&#10003;</div>
+        <h4>Audit Request Received</h4>
+        <p>Thank you for reaching out to Meridian Rx Advisors&#8482;. We&rsquo;ll review your information and contact you within 24 business hours to schedule your complimentary discovery call. No proprietary data will be requested until a mutual NDA is fully executed.</p>
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group"><label>Transaction Type</label>
-        <select><option value="">Select Type</option><option>Sell-Side (I want to sell)</option><option>Buy-Side (I want to acquire)</option><option>Partnership / Joint Venture</option><option>Strategic Advisory Only</option><option>Exploring Options — Not Sure Yet</option></select>
-      </div>
-      <div class="form-group"><label>Estimated Annual Pharmacy Revenue</label>
-        <select><option value="">Select Range</option><option>Under $5M</option><option>$5M – $25M</option><option>$25M – $100M</option><option>$100M – $500M</option><option>Over $500M</option><option>Prefer Not to Disclose</option></select>
-      </div>
-    </div>
-    <div class="form-group"><label>Pharmacy Type (select all that apply)</label>
-      <div class="checkbox-group">
-        <label class="checkbox-label"><input type="checkbox"> Outpatient</label>
-        <label class="checkbox-label"><input type="checkbox"> Specialty</label>
-        <label class="checkbox-label"><input type="checkbox"> Infusion</label>
-        <label class="checkbox-label"><input type="checkbox"> Mail Order</label>
-        <label class="checkbox-label"><input type="checkbox"> 340B</label>
-        <label class="checkbox-label"><input type="checkbox"> Retail</label>
-        <label class="checkbox-label"><input type="checkbox"> Compounding</label>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Number of Pharmacy Locations</label>
-        <select><option value="">Select Range</option><option>1 location</option><option>2–5 locations</option><option>6–15 locations</option><option>16–50 locations</option><option>50+ locations</option></select>
-      </div>
-      <div class="form-group"><label>Target Transaction Timeline</label>
-        <select><option value="">Select Timeline</option><option>Immediate (0–3 months)</option><option>Near-term (3–6 months)</option><option>Planning ahead (6–12 months)</option><option>Exploratory — No set timeline</option></select>
-      </div>
-    </div>
-    <div class="form-group"><label>340B Program Participation</label>
-      <select><option value="">Select Status</option><option>Yes — Active 340B Covered Entity</option><option>Yes — Contract Pharmacy Only</option><option>No — Not Currently Participating</option><option>Previously Participated</option><option>Under Review / Uncertain</option></select>
-    </div>
-    <div class="form-group"><label>Additional Context or Questions</label>
-      <textarea placeholder="Tell us about your situation, key drivers, timeline, or any specific questions. The more context you provide, the more targeted our initial outreach will be..." style="min-height:120px;"></textarea>
-    </div>
-    <div class="form-privacy">By submitting this form, you agree that your information will be used solely to respond to your inquiry. No data will be shared with third parties.</div>
-    <button type="submit" class="btn-submit">Request My Free Valuation Audit →</button>
-  </form>
-  <div id="success-audit" class="form-success" style="display:none;">
-    <div class="success-icon">✓</div>
-    <h4>Audit Request Received</h4>
-    <p>Thank you for reaching out. We'll review your information and contact you within 24 business hours to schedule your complimentary discovery call. No proprietary data will be requested until a mutual NDA is fully executed.</p>
-  </div>
-</div>
 
-<!-- GENERAL FORM -->
-<div id="tab-general" class="form-panel" style="display:none;">
-  <div class="form-section-title">General Inquiry</div>
-  <form onsubmit="submitForm(event, 'general')">
-    <div class="form-row">
-      <div class="form-group"><label>Full Name *</label><input type="text" placeholder="Your Full Name" required /></div>
-      <div class="form-group"><label>Email Address *</label><input type="email" placeholder="you@company.com" required /></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(312) 555-0100" /></div>
-      <div class="form-group"><label>Organization</label><input type="text" placeholder="Company / Health System" /></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Your Role</label>
-        <select><option value="">Select Role</option><option>C-Suite / CEO / CFO</option><option>VP / Director</option><option>Pharmacy Leadership</option><option>Investment Professional</option><option>Legal / Compliance</option><option>Other</option></select>
+    <!-- ── GENERAL FORM ── -->
+    <div id="tab-general" class="form-panel">
+      <div class="form-title">General Inquiry</div>
+      <form id="form-general" onsubmit="handleSubmit(event, 'general')">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="g-name">Full Name *</label>
+            <input type="text" id="g-name" placeholder="Your Full Name" required>
+          </div>
+          <div class="form-group">
+            <label for="g-email">Email Address *</label>
+            <input type="email" id="g-email" placeholder="you@company.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="g-phone">Phone Number</label>
+            <input type="tel" id="g-phone" placeholder="(312) 555-0100">
+          </div>
+          <div class="form-group">
+            <label for="g-org">Organization</label>
+            <input type="text" id="g-org" placeholder="Company / Health System">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="g-role">Your Role</label>
+            <select id="g-role">
+              <option value="">Select Role</option>
+              <option>C-Suite / CEO / CFO</option>
+              <option>VP / Director</option>
+              <option>Pharmacy Leadership</option>
+              <option>Investment Professional</option>
+              <option>Legal / Compliance</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="g-topic">Topic of Inquiry</label>
+            <select id="g-topic">
+              <option value="">Select Topic</option>
+              <option>M&amp;A Advisory Services</option>
+              <option>340B Strategy &amp; Compliance</option>
+              <option>Valuation Question</option>
+              <option>Partnership / JV Structuring</option>
+              <option>Speaker / Webinar Request</option>
+              <option>Media / Press Inquiry</option>
+              <option>Partnership / Referral Opportunity</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="g-source">How Did You Hear About Us?</label>
+          <select id="g-source">
+            <option value="">Select Source</option>
+            <option>LinkedIn</option>
+            <option>Google Search</option>
+            <option>Colleague / Referral</option>
+            <option>HFMA</option>
+            <option>ASHP</option>
+            <option>Conference / Event</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="g-msg">Message *</label>
+          <textarea id="g-msg" placeholder="Tell us what&rsquo;s on your mind. We respond to all inquiries within 24 business hours..." style="min-height:140px;" required></textarea>
+        </div>
+        <div class="form-privacy">By submitting this form, you agree that your information will be used solely to respond to your inquiry. No data will be shared with third parties.</div>
+        <button type="submit" class="btn-submit">Send Message &#8594;</button>
+      </form>
+      <div id="success-general" class="form-success">
+        <div class="success-circle">&#10003;</div>
+        <h4>Message Received</h4>
+        <p>Thank you for reaching out to Meridian Rx Advisors&#8482;. We&rsquo;ll respond to your inquiry within 24 business hours.</p>
       </div>
-      <div class="form-group"><label>Topic of Inquiry</label>
-        <select><option value="">Select Topic</option><option>M&amp;A Advisory Services</option><option>340B Strategy &amp; Compliance</option><option>Valuation Question</option><option>Partnership / JV Structuring</option><option>Speaker / Webinar Request</option><option>Media / Press Inquiry</option><option>Partnership / Referral Opportunity</option><option>Other</option></select>
-      </div>
     </div>
-    <div class="form-group"><label>How Did You Hear About Us?</label>
-      <select><option value="">Select Source</option><option>LinkedIn</option><option>Google Search</option><option>Colleague / Referral</option><option>HFMA</option><option>ASHP</option><option>Conference / Event</option><option>Other</option></select>
-    </div>
-    <div class="form-group"><label>Message *</label>
-      <textarea placeholder="Tell us what's on your mind. We respond to all inquiries within 24 business hours..." style="min-height:140px;" required></textarea>
-    </div>
-    <div class="form-privacy">By submitting this form, you agree that your information will be used solely to respond to your inquiry.</div>
-    <button type="submit" class="btn-submit">Send Message →</button>
-  </form>
-  <div id="success-general" class="form-success" style="display:none;">
-    <div class="success-icon">✓</div>
-    <h4>Message Received</h4>
-    <p>Thank you for reaching out to Meridian Rx Advisors™. We'll respond within 24 business hours.</p>
-  </div>
-</div>
 
-<!-- PILOT FORM -->
-<div id="tab-pilot" class="form-panel" style="display:none;">
-  <div class="form-section-title">Pilot Engagement Request</div>
-  <form onsubmit="submitForm(event, 'pilot')">
-    <div class="form-row">
-      <div class="form-group"><label>Full Name *</label><input type="text" placeholder="Your Full Name" required /></div>
-      <div class="form-group"><label>Email Address *</label><input type="email" placeholder="you@company.com" required /></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(312) 555-0100" /></div>
-      <div class="form-group"><label>Organization *</label><input type="text" placeholder="Health System / PE Firm" required /></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Your Role</label>
-        <select><option value="">Select Role</option><option>C-Suite / CEO / CFO</option><option>VP / Director of Finance</option><option>Pharmacy Director</option><option>Investment Professional (PE / IB)</option><option>Business Development</option><option>Other</option></select>
+    <!-- ── PILOT FORM ── -->
+    <div id="tab-pilot" class="form-panel">
+      <div class="form-title">Pilot Engagement Request</div>
+      <form id="form-pilot" onsubmit="handleSubmit(event, 'pilot')">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="p-name">Full Name *</label>
+            <input type="text" id="p-name" placeholder="Your Full Name" required>
+          </div>
+          <div class="form-group">
+            <label for="p-email">Email Address *</label>
+            <input type="email" id="p-email" placeholder="you@company.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="p-phone">Phone Number</label>
+            <input type="tel" id="p-phone" placeholder="(312) 555-0100">
+          </div>
+          <div class="form-group">
+            <label for="p-org">Organization *</label>
+            <input type="text" id="p-org" placeholder="Health System / PE Firm" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="p-role">Your Role</label>
+            <select id="p-role">
+              <option value="">Select Role</option>
+              <option>C-Suite / CEO / CFO</option>
+              <option>VP / Director of Finance</option>
+              <option>Pharmacy Director</option>
+              <option>Investment Professional (PE / IB)</option>
+              <option>Business Development</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="p-focus">Pilot Engagement Focus</label>
+            <select id="p-focus">
+              <option value="">Select Focus</option>
+              <option>Deal Sourcing &amp; Market Scan</option>
+              <option>AI-Augmented Valuation Model</option>
+              <option>Due Diligence Support</option>
+              <option>340B Impact Analysis</option>
+              <option>Partnership / JV Structuring</option>
+              <option>Post-Transaction Integration</option>
+              <option>Multiple / Comprehensive</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="p-budget">Approximate Engagement Budget</label>
+            <select id="p-budget">
+              <option value="">Select Range</option>
+              <option>Under $15K (project / pilot)</option>
+              <option>$15K &ndash; $50K</option>
+              <option>$50K &ndash; $150K</option>
+              <option>$150K+ (full advisory)</option>
+              <option>Success Fee Only (3% of transaction)</option>
+              <option>Open to Discussion</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="p-start">Desired Start Timeline</label>
+            <select id="p-start">
+              <option value="">Select Timeline</option>
+              <option>Immediately</option>
+              <option>Within 30 days</option>
+              <option>Within 60&ndash;90 days</option>
+              <option>Flexible</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="p-desc">Project / Deal Description *</label>
+          <textarea id="p-desc" placeholder="Describe the deal, asset, or situation you need advisory support on. Include relevant details about the pharmacy asset, health system, transaction stage, or specific challenges you&rsquo;re facing..." style="min-height:130px;" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="p-obj">Key Objectives for This Engagement</label>
+          <textarea id="p-obj" placeholder="What does a successful outcome look like? What specific deliverables or outcomes are most important to you?" style="min-height:90px;"></textarea>
+        </div>
+        <div class="form-privacy">By submitting this form, you agree that your information will be used solely to respond to your inquiry. A mutual NDA will be executed before any sensitive deal details are shared.</div>
+        <button type="submit" class="btn-submit">Submit Pilot Engagement Request &#8594;</button>
+      </form>
+      <div id="success-pilot" class="form-success">
+        <div class="success-circle">&#10003;</div>
+        <h4>Pilot Request Received</h4>
+        <p>We&rsquo;ll review your project details and reach out within 24 business hours to discuss scope, timeline, and next steps for your engagement.</p>
       </div>
-      <div class="form-group"><label>Pilot Engagement Focus</label>
-        <select><option value="">Select Focus</option><option>Deal Sourcing &amp; Market Scan</option><option>AI-Augmented Valuation Model</option><option>Due Diligence Support</option><option>340B Impact Analysis</option><option>Partnership / JV Structuring</option><option>Post-Transaction Integration</option><option>Multiple / Comprehensive</option></select>
-      </div>
     </div>
-    <div class="form-row">
-      <div class="form-group"><label>Approximate Engagement Budget</label>
-        <select><option value="">Select Range</option><option>Under $15K (project / pilot)</option><option>$15K – $50K</option><option>$50K – $150K</option><option>$150K+ (full advisory)</option><option>Success Fee Only (3% of transaction)</option><option>Open to Discussion</option></select>
-      </div>
-      <div class="form-group"><label>Desired Start Timeline</label>
-        <select><option value="">Select Timeline</option><option>Immediately</option><option>Within 30 days</option><option>Within 60–90 days</option><option>Flexible</option></select>
-      </div>
-    </div>
-    <div class="form-group"><label>Project / Deal Description *</label>
-      <textarea placeholder="Describe the deal, asset, or situation you need advisory support on. Include relevant details about the pharmacy asset, health system, transaction stage, or specific challenges..." style="min-height:140px;" required></textarea>
-    </div>
-    <div class="form-group"><label>Key Objectives for This Engagement</label>
-      <textarea placeholder="What does a successful outcome look like? What specific deliverables or outcomes are most important to you?" style="min-height:90px;"></textarea>
-    </div>
-    <div class="form-privacy">By submitting this form, you agree that your information will be used solely to respond to your inquiry. A mutual NDA will be executed before any sensitive deal details are shared.</div>
-    <button type="submit" class="btn-submit">Submit Pilot Engagement Request →</button>
-  </form>
-  <div id="success-pilot" class="form-success" style="display:none;">
-    <div class="success-icon">✓</div>
-    <h4>Pilot Request Received</h4>
-    <p>We'll review your project details and reach out within 24 business hours to discuss scope, timeline, and next steps.</p>
-  </div>
-</div>
-```
 
-  </div>
+  </div><!-- /forms-wrap -->
 
-  <!-- Audit CTA -->
-
-  <div class="audit-cta fade-up">
+  <div class="cta-banner fade-up">
     <h3>Ready to Know What Your Pharmacy Is Worth?</h3>
-    <p>Our free AI-Augmented Valuation Audit gives you a defensible preliminary range — based on script data, 340B economics, market comps, and AI-enhanced modeling — before you make any decisions.</p>
-    <a href="#contact" onclick="switchTab('audit')" style="background:#fff;color:#0a1628;display:inline-block;padding:0.85rem 2rem;border-radius:8px;font-weight:600;text-decoration:none;margin-top:0.5rem;">Get Your Free Valuation Audit</a>
+    <p>Our free AI-Augmented Valuation Audit gives you a defensible preliminary range &mdash; based on script data, 340B economics, market comps, and AI-enhanced modeling &mdash; before you make any decisions.</p>
+    <a href="#contact" class="btn-cta-light" onclick="showTab('audit', null)">Get Your Free Valuation Audit</a>
   </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
-
+<!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="nav-logo">Meridian <span>Rx</span> Advisors<sup style="font-size:0.55em;vertical-align:super;font-family:sans-serif;font-weight:400;color:#4a5a7a;">™</sup></div>
-      <p>Boutique M&A advisory specializing in health system & specialty pharmacy transactions. AI-enhanced. Results-driven. Serving clients nationally from Lake Villa, IL.</p>
+    <div>
+      <div class="footer-brand-name">Meridian <span class="rx">Rx</span> Advisors<sup style="font-size:0.45em;vertical-align:super;font-weight:400;font-family:sans-serif;color:rgba(255,255,255,0.4);">&#8482;</sup></div>
+      <p class="footer-desc">Boutique M&amp;A advisory specializing in health system &amp; specialty pharmacy transactions. AI-enhanced. Results-driven. Serving clients nationally from Lake Villa, IL.</p>
     </div>
     <div class="footer-col">
-      <h5>Services</h5>
-      <a href="#services">Deal Sourcing & Valuation</a>
-      <a href="#services">Due Diligence</a>
+      <div class="footer-col-title">Services</div>
+      <a href="#services">Deal Sourcing &amp; Valuation</a>
+      <a href="#services">Due Diligence &amp; P&amp;L</a>
       <a href="#services">Negotiation Support</a>
       <a href="#services">340B Strategy</a>
       <a href="#services">Integration Planning</a>
     </div>
     <div class="footer-col">
-      <h5>Industries</h5>
+      <div class="footer-col-title">Industries</div>
       <a href="#industries">Health Systems</a>
       <a href="#industries">Specialty Pharmacy</a>
       <a href="#industries">Private Equity</a>
       <a href="#industries">Investment Banks</a>
+      <a href="#industries">PBMs &amp; Health Plans</a>
     </div>
     <div class="footer-col">
-      <h5>Company</h5>
+      <div class="footer-col-title">Company</div>
       <a href="#resources">Resources</a>
       <a href="#contact">Free Valuation Audit</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact">Contact Us</a>
       <a href="#contact">Schedule a Call</a>
+      <a href="/cdn-cgi/l/email-protection#5d303c292935382a373235332e32331d30382f3439343c332f253c392b342e322f2e733e3230">Email Us</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Meridian Rx Advisors™ LLC. All rights reserved.</span>
-    <span>Lake Villa, IL · Serving Clients Nationwide</span>
+    <span>&copy; 2026 Meridian Rx Advisors&#8482; LLC. All rights reserved.</span>
+    <span>Lake Villa, IL &middot; Serving Clients Nationwide</span>
+    <span>HFMA &middot; ASHP &middot; Michigan Ross Alumni</span>
   </div>
 </footer>
-<div class="disclaimer">
-  Meridian Rx Advisors™ LLC is not a registered broker-dealer or investment adviser. Advisory services are provided for informational and strategic purposes. All transactions are subject to applicable regulatory requirements. The free valuation audit does not constitute a formal appraisal or fairness opinion.
+<div class="disclaimer-bar">
+  Meridian Rx Advisors&#8482; LLC is not a registered broker-dealer or investment adviser. Advisory services are provided for informational and strategic purposes only. All transactions are subject to applicable regulatory requirements. The free valuation audit does not constitute a formal appraisal or fairness opinion. &nbsp;&middot;&nbsp; matthewjohnson&#64;meridianrxadvisors.com &nbsp;&middot;&nbsp; meridianrxadvisors.com
 </div>
 
-<script>
-  // Tab switching
-  function switchTab(tab) {
-    document.querySelectorAll('.form-panel').forEach(p => {
-      p.style.display = 'none';
-      p.classList.remove('active');
-    });
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    const panel = document.getElementById('tab-' + tab);
-    if (panel) { panel.style.display = 'block'; panel.classList.add('active'); }
-    document.querySelectorAll('.tab-btn').forEach(b => {
-      if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(tab)) b.classList.add('active');
-    });
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Tab switching ──
+function showTab(id, btn) {
+  var panels = document.querySelectorAll('.form-panel');
+  for (var i = 0; i < panels.length; i++) {
+    panels[i].style.display = 'none';
+    panels[i].classList.remove('active');
   }
-
-  // Form submission
-  function submitForm(e, id) {
-    e.preventDefault();
-    e.target.style.display = 'none';
-    document.getElementById('success-' + id).style.display = 'block';
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
   }
+  var panel = document.getElementById('tab-' + id);
+  if (panel) {
+    panel.style.display = 'block';
+    panel.classList.add('active');
+  }
+  if (btn) btn.classList.add('active');
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+// ── Form submission ──
+function handleSubmit(e, id) {
+  e.preventDefault();
+  var form = document.getElementById('form-' + id);
+  var success = document.getElementById('success-' + id);
+  if (form) form.style.display = 'none';
+  if (success) success.style.display = 'block';
+}
+
+// ── Mobile menu ──
+function toggleMenu() {
+  var m = document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+
+// ── Scroll animations ──
+(function() {
+  var els = document.querySelectorAll('.fade-up');
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-     
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { obs.observe(el); });
+})();
+
+// ── Nav active state on scroll ──
+(function() {
+  var sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', function() {
+    var scrollY = window.scrollY;
+    sections.forEach(function(sec) {
+      var top = sec.offsetTop - 90;
+      var bottom = top + sec.offsetHeight;
+      var link = document.querySelector('nav a[href="#' + sec.id + '"]');
+      if (link) {
+        if (scrollY >= top && scrollY < bottom) {
