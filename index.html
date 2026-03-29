@@ -671,7 +671,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
       <span class="cib-icon">&#9993;&#65039;</span>
       <div>
         <div class="cib-label">Email</div>
-        <div class="cib-val"><a href="/cdn-cgi/l/email-protection#177a7663637f72607d787f79647879577a72657e737e7679656f7673617e647865643974787a">matthewjohnson&#64;meridianrxadvisors.com</a></div>
+        <div class="cib-val"><span>matthewjohnson&#64;meridianrxadvisors.com</span></div>
       </div>
     </div>
     <div class="cib-card">
@@ -1039,7 +1039,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
       <a href="#contact">Free Valuation Audit</a>
       <a href="#contact">Contact Us</a>
       <a href="#contact">Schedule a Call</a>
-      <a href="/cdn-cgi/l/email-protection#5d303c292935382a373235332e32331d30382f3439343c332f253c392b342e322f2e733e3230">Email Us</a>
+      <span>Email Us</span>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1052,7 +1052,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
   Meridian Rx Advisors&#8482; LLC is not a registered broker-dealer or investment adviser. Advisory services are provided for informational and strategic purposes only. All transactions are subject to applicable regulatory requirements. The free valuation audit does not constitute a formal appraisal or fairness opinion. &nbsp;&middot;&nbsp; matthewjohnson&#64;meridianrxadvisors.com &nbsp;&middot;&nbsp; meridianrxadvisors.com
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── Tab switching ──
 function showTab(id, btn) {
   var panels = document.querySelectorAll('.form-panel');
@@ -1106,9 +1106,4 @@ function toggleMenu() {
   var sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', function() {
     var scrollY = window.scrollY;
-    sections.forEach(function(sec) {
-      var top = sec.offsetTop - 90;
-      var bottom = top + sec.offsetHeight;
-      var link = document.querySelector('nav a[href="#' + sec.id + '"]');
-      if (link) {
-        if (scrollY >= top && scrollY < bottom) {
+    sections.forEach(function(sec)
