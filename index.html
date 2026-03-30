@@ -144,8 +144,8 @@ h2 em { color: #1a52d4; font-style: normal; }
 .tab-btn { background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; color: #4a5a7a; font-size: 0.88rem; font-weight: 600; padding: 0.7rem 1.4rem; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
 .tab-btn:hover { color: #0a1628; }
 .tab-btn.active { color: #1a52d4; border-bottom-color: #1a52d4; }
-.form-panel { display: none; } .form-panel.active { display: block !important; }
-.form-panel.active { display: block; }
+.form-panel { display: none; }
+.form-panel.active { display: block !important; visibility: visible !important; opacity: 1 !important; }
 .form-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; }
 .form-notice { display: flex; gap: 0.75rem; align-items: flex-start; background: rgba(26,82,212,0.05); border: 1px solid rgba(26,82,212,0.16); border-radius: 8px; padding: 0.9rem 1rem; margin-bottom: 1.5rem; font-size: 0.83rem; color: #4a5a7a; line-height: 1.6; }
 .form-notice .notice-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
@@ -681,7 +681,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
       <span class="cib-icon">&#9993;&#65039;</span>
       <div>
         <div class="cib-label">Email</div>
-        <div class="cib-val">matthewjohnson&#64;meridianrxadvisors&#46;com</div>
+        <div class="cib-val">matthewjohnson&#64;meridianrxadvisors.com</div>
       </div>
     </div>
     <div class="cib-card">
@@ -842,7 +842,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
           <div class="success-step"><span class="success-step-num">2</span><span>During the call, we&rsquo;ll discuss your situation, goals, and timeline &mdash; with no obligation and no proprietary data required.</span></div>
           <div class="success-step"><span class="success-step-num">3</span><span>Following mutual interest, we&rsquo;ll execute a <strong>mutual NDA</strong> before any sensitive data is shared or analysis begins.</span></div>
         </div>
-        <p style="margin-top:1.5rem;font-size:0.84rem;color:#8a9bbf;">Questions in the meantime? Email us at matthewjohnson&#64;meridianrxadvisors&#46;com</p>
+        <p style="margin-top:1.5rem;font-size:0.84rem;color:#8a9bbf;">Questions in the meantime? Email us at matthewjohnson&#64;meridianrxadvisors.com</p>
       </div>
     </div>
 
@@ -922,7 +922,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
         <div class="success-circle">&#10003;</div>
         <h4>Thank You &mdash; Message Received!</h4>
         <p>We&rsquo;ve received your inquiry and appreciate you contacting Meridian Rx Advisors&#8482;. A member of our team will review your message and respond within <strong>24 business hours</strong>.</p>
-        <p style="margin-top:1rem;font-size:0.84rem;color:#8a9bbf;">Need an immediate response? Email us directly at matthewjohnson&#64;meridianrxadvisors&#46;com</p>
+        <p style="margin-top:1rem;font-size:0.84rem;color:#8a9bbf;">Need an immediate response? Email us directly at matthewjohnson&#64;meridianrxadvisors.com</p>
       </div>
     </div>
 
@@ -1021,7 +1021,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
           <div class="success-step"><span class="success-step-num">2</span><span>We&rsquo;ll execute a <strong>mutual NDA</strong> before any sensitive deal details are discussed or shared.</span></div>
           <div class="success-step"><span class="success-step-num">3</span><span>We&rsquo;ll propose a tailored engagement structure aligned to your objectives and budget.</span></div>
         </div>
-        <p style="margin-top:1.5rem;font-size:0.84rem;color:#8a9bbf;">Questions? Email us at matthewjohnson&#64;meridianrxadvisors&#46;com</p>
+        <p style="margin-top:1.5rem;font-size:0.84rem;color:#8a9bbf;">Questions? Email us at matthewjohnson&#64;meridianrxadvisors.com</p>
       </div>
     </div>
 
@@ -1073,33 +1073,32 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
   </div>
 </footer>
 <div class="disclaimer-bar">
-  Meridian Rx Advisors&#8482; LLC is not a registered broker-dealer or investment adviser. Advisory services are provided for informational and strategic purposes only. All transactions are subject to applicable regulatory requirements. The free valuation audit does not constitute a formal appraisal or fairness opinion. &nbsp;&middot;&nbsp; matthewjohnson&#64;meridianrxadvisors&#46;com &nbsp;&middot;&nbsp; meridianrxadvisors.com
+  Meridian Rx Advisors&#8482; LLC is not a registered broker-dealer or investment adviser. Advisory services are provided for informational and strategic purposes only. All transactions are subject to applicable regulatory requirements. The free valuation audit does not constitute a formal appraisal or fairness opinion. &nbsp;&middot;&nbsp; matthewjohnson&#64;meridianrxadvisors.com &nbsp;&middot;&nbsp; meridianrxadvisors.com
 </div>
 
 <script>
 // ── Tab switching ──
 function showTab(id, btn) {
-  // Hide all panels
-  var panels = document.querySelectorAll('.form-panel');
-  for (var i = 0; i < panels.length; i++) {
-    panels[i].style.display = 'none';
-    panels[i].classList.remove('active');
+  // Hide ALL panels
+  var allPanels = document.querySelectorAll('.form-panel');
+  for (var i = 0; i < allPanels.length; i++) {
+    allPanels[i].style.cssText = 'display:none !important;';
+    allPanels[i].classList.remove('active');
   }
-  // Remove active from all tab buttons
-  var btns = document.querySelectorAll('.tab-btn');
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].classList.remove('active');
-    btns[i].style.color = '#4a5a7a';
-    btns[i].style.borderBottomColor = 'transparent';
+  // Reset ALL tab buttons
+  var allBtns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < allBtns.length; i++) {
+    allBtns[i].classList.remove('active');
+    allBtns[i].style.color = '#4a5a7a';
+    allBtns[i].style.borderBottomColor = 'transparent';
   }
-  // Show selected panel
-  var panel = document.getElementById('tab-' + id);
-  if (panel) {
-    panel.style.display = 'block';
-    panel.style.visibility = 'visible';
-    panel.classList.add('active');
+  // Show the selected panel
+  var target = document.getElementById('tab-' + id);
+  if (target) {
+    target.style.cssText = 'display:block !important; visibility:visible !important; opacity:1 !important;';
+    target.classList.add('active');
   }
-  // Highlight selected tab button
+  // Activate the clicked button
   if (btn) {
     btn.classList.add('active');
     btn.style.color = '#1a52d4';
@@ -1108,18 +1107,31 @@ function showTab(id, btn) {
 }
 
 // Initialize on page load - ensure first tab is visible
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize tabs immediately when script runs (not waiting for DOMContentLoaded)
+function initTabs() {
+  var panels = document.querySelectorAll('.form-panel');
+  for (var i = 0; i < panels.length; i++) {
+    panels[i].style.display = 'none';
+  }
   var firstPanel = document.getElementById('tab-audit');
-  var firstBtn = document.querySelector('.tab-btn');
   if (firstPanel) {
     firstPanel.style.display = 'block';
     firstPanel.style.visibility = 'visible';
+    firstPanel.style.opacity = '1';
+    firstPanel.classList.add('active');
   }
+  var firstBtn = document.querySelector('.tab-btn');
   if (firstBtn) {
+    firstBtn.classList.add('active');
     firstBtn.style.color = '#1a52d4';
     firstBtn.style.borderBottomColor = '#1a52d4';
   }
-});
+}
+document.addEventListener('DOMContentLoaded', initTabs);
+// Also run immediately in case DOMContentLoaded already fired
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  initTabs();
+}
 
 // ── Form submission ──
 function handleSubmit(e, id) {
