@@ -1166,4 +1166,22 @@ function toggleMenu() {
   var sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', function() {
     var scrollY = window.scrollY;
-    sections.forEach(function(sec)
+    sections.forEach(function(sec) {
+      var top = sec.offsetTop - 90;
+      var bottom = top + sec.offsetHeight;
+      var link = document.querySelector('nav a[href="#' + sec.id + '"]');
+      if (link) {
+        if (scrollY >= top && scrollY < bottom) {
+          link.style.color = '#0a1628';
+          link.style.fontWeight = '700';
+        } else {
+          link.style.color = '';
+          link.style.fontWeight = '';
+        }
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
