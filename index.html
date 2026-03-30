@@ -197,8 +197,8 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
 .tooltip-wrap:hover .tooltip-text { visibility: visible; opacity: 1; }
 
 /* ── ANIMATIONS ── */
-.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up { opacity: 1; transform: none; }
+.fade-up.visible { opacity: 1; transform: none; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
@@ -1088,18 +1088,7 @@ function toggleMenu() {
   m.classList.toggle('open');
 }
 
-// ── Scroll animations ──
-(function() {
-  var els = document.querySelectorAll('.fade-up');
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  els.forEach(function(el) { obs.observe(el); });
-})();
+// Animations disabled for compatibility
 
 // ── Nav active state on scroll ──
 (function() {
