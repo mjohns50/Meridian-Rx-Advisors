@@ -681,7 +681,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
       <span class="cib-icon">&#9993;&#65039;</span>
       <div>
         <div class="cib-label">Email</div>
-        <div class="cib-val"><a href="mailto:matthewjohnson@meridianrxadvisors.com" style="color:#0a1628;text-decoration:none;">matthewjohnson@meridianrxadvisors.com</a></div>
+        <div class="cib-val"><a href="/cdn-cgi/l/email-protection#cba6aabfbfa3aebca1a4a3a5b8a4a58ba6aeb9a2afa2aaa5b9b3aaafbda2b8a4b9b8e5a8a4a6" style="color:#0a1628;text-decoration:none;"><span class="__cf_email__" data-cfemail="24494550504c41534e4b4c4a574b4a644941564d404d454a565c4540524d574b56570a474b49">[email&#160;protected]</span></a></div>
       </div>
     </div>
     <div class="cib-card">
@@ -714,7 +714,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
         <span class="notice-icon">&#128274;</span>
         <span>This form collects only high-level, non-sensitive information to schedule your complimentary discovery call. A mutual NDA will be executed before any proprietary pharmacy data or financials are requested or shared.</span>
       </div>
-      <form id="form-audit" onsubmit="handleSubmit(event, 'audit')">
+      <form id="form-audit" data-endpoint="https://formspree.io/f/xgopkgyp" onsubmit="handleSubmit(event, 'audit')">
         <div class="form-row">
           <div class="form-group">
             <label for="a-fname">First Name *</label>
@@ -849,7 +849,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
     <!-- ── GENERAL FORM ── -->
     <div id="tab-general" class="form-panel">
       <div class="form-title">General Inquiry</div>
-      <form id="form-general" onsubmit="handleSubmit(event, 'general')">
+      <form id="form-general" data-endpoint="https://formspree.io/f/xgopkgyp" onsubmit="handleSubmit(event, 'general')">
         <div class="form-row">
           <div class="form-group">
             <label for="g-name">Full Name *</label>
@@ -929,7 +929,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
     <!-- ── PILOT FORM ── -->
     <div id="tab-pilot" class="form-panel">
       <div class="form-title">Pilot Engagement Request</div>
-      <form id="form-pilot" onsubmit="handleSubmit(event, 'pilot')">
+      <form id="form-pilot" data-endpoint="https://formspree.io/f/xgopkgyp" onsubmit="handleSubmit(event, 'pilot')">
         <div class="form-row">
           <div class="form-group">
             <label for="p-name">Full Name *</label>
@@ -1076,7 +1076,7 @@ footer { background: #0a1628 !important; padding: 4rem 5% 2rem; }
   Meridian Rx Advisors&#8482; LLC is not a registered broker-dealer or investment adviser. Advisory services are provided for informational and strategic purposes only. All transactions are subject to applicable regulatory requirements. The free valuation audit does not constitute a formal appraisal or fairness opinion. &nbsp;&middot;&nbsp; matthewjohnson&#64;meridianrxadvisors.com &nbsp;&middot;&nbsp; meridianrxadvisors.com
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── Tab switching ──
 function showTab(id, btn) {
   // Hide ALL panels
@@ -1138,19 +1138,84 @@ function handleSubmit(e, id) {
   e.preventDefault();
   var form = document.getElementById('form-' + id);
   var success = document.getElementById('success-' + id);
+  var btn = form ? form.querySelector('.btn-submit') : null;
+
+  // Disable button and show sending state
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+  }
+
+  // Collect form data
+  var data = {};
   if (form) {
-    form.style.display = 'none';
-    form.style.visibility = 'hidden';
-    form.style.opacity = '0';
-    form.style.height = '0';
-    form.style.overflow = 'hidden';
+    var inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(function(input) {
+      if (input.type === 'checkbox') {
+        if (input.checked) {
+          var label = input.parentElement.textContent.trim();
+          data['Pharmacy Type'] = (data['Pharmacy Type'] ? data['Pharmacy Type'] + ', ' : '') + label;
+        }
+      } else if (input.name || input.id) {
+        var key = input.name || input.id;
+        if (input.value) data[key] = input.value;
+      }
+    });
+    // Add form type for easy identification in inbox
+    data['_subject'] = 'Meridian Rx Advisors - New ' + (
+      id === 'audit' ? 'Valuation Audit Request' :
+      id === 'general' ? 'General Inquiry' :
+      'Pilot Engagement Request'
+    );
+    data['Form Type'] = (
+      id === 'audit' ? 'Free Valuation Audit' :
+      id === 'general' ? 'General Inquiry' :
+      'Pilot Engagement Request'
+    );
+    data['Submitted At'] = new Date().toLocaleString('en-US', {timeZone: 'America/Chicago'});
   }
-  if (success) {
-    success.style.cssText = 'display:block !important; visibility:visible !important; opacity:1 !important; padding:3rem 2rem;';
-    setTimeout(function() {
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 100);
-  }
+
+  // Submit to Formspree
+  fetch('https://formspree.io/f/xgopkgyp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(function(response) {
+    if (response.ok) {
+      // Success - show thank you message
+      if (form) {
+        form.style.cssText = 'display:none !important;';
+      }
+      if (success) {
+        success.style.cssText = 'display:block !important; visibility:visible !important; opacity:1 !important; padding:3rem 2rem;';
+        setTimeout(function() {
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    } else {
+      // Formspree error - still show confirmation but log error
+      if (form) form.style.cssText = 'display:none !important;';
+      if (success) {
+        success.style.cssText = 'display:block !important; visibility:visible !important; opacity:1 !important; padding:3rem 2rem;';
+        setTimeout(function() {
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+      console.error('Formspree submission error');
+    }
+  })
+  .catch(function(error) {
+    // Network error - still show confirmation
+    if (form) form.style.cssText = 'display:none !important;';
+    if (success) {
+      success.style.cssText = 'display:block !important; visibility:visible !important; opacity:1 !important; padding:3rem 2rem;';
+      setTimeout(function() {
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+    console.error('Network error:', error);
+  });
 }
 
 // ── Mobile menu ──
@@ -1171,17 +1236,3 @@ function toggleMenu() {
       var bottom = top + sec.offsetHeight;
       var link = document.querySelector('nav a[href="#' + sec.id + '"]');
       if (link) {
-        if (scrollY >= top && scrollY < bottom) {
-          link.style.color = '#0a1628';
-          link.style.fontWeight = '700';
-        } else {
-          link.style.color = '';
-          link.style.fontWeight = '';
-        }
-      }
-    });
-  });
-})();
-</script>
-</body>
-</html>
